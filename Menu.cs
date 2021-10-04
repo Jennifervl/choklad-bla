@@ -15,27 +15,49 @@ namespace h5chocolate_teambla
 
         public static Order CreateNewOrder()
         {
-            Order newOrder = new Order(0, 0, "");
-            Console.WriteLine("[1] Chocolate");
-            Console.WriteLine("[2] Cap");
-
-            string choice = Console.ReadLine();
-
-            if (choice == "1")
+            Order newOrder = new Order(0);
+            string choice = "";
+            while (true)
             {
-                Chocolate.createChocolate();
+                Console.WriteLine("[1] Chocolate");
+                Console.WriteLine("[2] Cap");
 
+                choice = Console.ReadLine();
+
+                if (choice == "1")
+                {
+                    Chocolate newChocolate = Chocolate.createChocolate();
+                    newOrder.AddProduct(newChocolate);
+                }
+                else if (choice == "2")
+                {
+                    Cap newCap = Cap.CreateCap();
+                    newOrder.AddProduct(newCap);
+                }
+
+                Console.WriteLine("Do you want to add another Product J/N?");
+                choice = Console.ReadLine();
+
+                if (choice == "J") continue;
+                else break;
 
             }
-            else if (choice == "2")
-            {
+            Console.WriteLine("Who do you want to donate to?");
+            Console.WriteLine("1. WWF");
+            Console.WriteLine("2. BRIS");
+            Console.WriteLine("3. Röda korset");
+            Console.WriteLine("4. Random");
+            choice = Console.ReadLine();
 
-            }
+            if (choice == "1") newOrder.DonationRecipient = "WWF";
+            else if (choice == "2") newOrder.DonationRecipient = "BRIS";
+            else if (choice == "3") newOrder.DonationRecipient = "Röda korset";
 
+            newOrder.setTotal();
             return newOrder;
         }
 
-        public void ShowMenu()
+        public static void ShowMenu()
         {
             Console.WriteLine("[1] Place order");
             Console.WriteLine("[2] Order history");
@@ -47,7 +69,6 @@ namespace h5chocolate_teambla
             {
                 case "1":
                     {
-
                         Order.CreateOrder();
                         break;
                     }

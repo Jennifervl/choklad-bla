@@ -8,6 +8,8 @@ namespace h5chocolate_teambla
         {
             Console.WriteLine("H5Choclate!");
 
+            Console.WriteLine("Hello team blå");
+            Console.WriteLine("Hej gänget!");
         }
     }
 }

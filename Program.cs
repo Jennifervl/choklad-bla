@@ -7,6 +7,7 @@ namespace h5chocolate_teambla
         static void Main(string[] args)
         {
             Console.WriteLine("H5Choclate!");
+            Console.WriteLine("Hello team blå");
         }
     }
 }

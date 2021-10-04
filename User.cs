@@ -1,10 +1,21 @@
 namespace h5chocolate_teambla
 {
-    class User
+    public class User
     {
         private string id;
-        private OrderHistory UserHistory = new OrderHistory();
+        private OrderHistory userHistory = new OrderHistory();
 
+        public string Id
+        {
+            get
+            {
+                return id;
+            }
+            private set
+            {
+                id = value;
+            }
+        }
         public User(string id)
         {
             this.id = id;

@@ -6,10 +6,16 @@ namespace h5chocolate_teambla
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("H5Choclate!");
+            UserList userList = new UserList();
 
-            Console.WriteLine("Hello team blå");
-            Console.WriteLine("Hej gänget!");
+            User newUser = Menu.CreateNewUser();
+            userList.AddUser(newUser);
+
+            foreach (User item in userList.GetList())
+            {
+                Console.WriteLine(item.Id);
+            }
+            Console.WriteLine(newUser.Id);
         }
     }
 }

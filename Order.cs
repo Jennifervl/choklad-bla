@@ -30,7 +30,7 @@ namespace h5chocolate_teambla
         {
             orderNr = currentOrderNr;
             currentOrderNr += 1;
-            dateTime = DateTime.Today;
+            dateTime = DateTime.Now;
         }
         public void AddProduct(Product product)
         {
@@ -50,6 +50,7 @@ namespace h5chocolate_teambla
             Console.WriteLine("Order nr: " + orderNr);
             Console.WriteLine("Donation amount: " + donation.ToString("C", CultureInfo.CurrentCulture));
             Console.WriteLine("Donation recipient: " + donationRecipient);
+            Console.WriteLine("Time of order: " + dateTime.ToString("MM/dd/yyyy HH:mm"));
 
             Console.WriteLine();
             PrintProductList();

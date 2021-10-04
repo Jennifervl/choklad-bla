@@ -6,7 +6,7 @@ namespace h5chocolate_teambla
     {
         public static User CreateNewUser()
         {
-            Console.WriteLine("Enter ID: ");
+            Console.Write("Enter ID: ");
             string userInput = Console.ReadLine();
 
             User createdUser = new User(userInput);
@@ -37,7 +37,7 @@ namespace h5chocolate_teambla
                 }
 
                 Console.WriteLine("Do you want to add another Product J/N?");
-                choice = Console.ReadLine();
+                choice = Console.ReadLine().ToUpper();
 
                 if (choice == "J") continue;
                 else break;

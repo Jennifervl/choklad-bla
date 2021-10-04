@@ -15,7 +15,7 @@ namespace h5chocolate_teambla
 
         public static Order CreateNewOrder()
         {
-            Order newOrder = new Order(0);
+            Order newOrder = new Order();
             string choice = "";
             while (true)
             {
@@ -26,12 +26,12 @@ namespace h5chocolate_teambla
 
                 if (choice == "1")
                 {
-                    Chocolate newChocolate = Chocolate.createChocolate();
-                    newOrder.AddProduct(newChocolate);
+                    // Chocolate newChocolate = Chocolate.CreateChocolate();
+                    // newOrder.AddProduct(newChocolate);
                 }
                 else if (choice == "2")
                 {
-                    Cap newCap = Cap.CreateCap();
+                    Cap newCap = Menu.CreateCap();
                     newOrder.AddProduct(newCap);
                 }
 
@@ -69,15 +69,16 @@ namespace h5chocolate_teambla
             {
                 case "1":
                     {
-                        Order.CreateOrder();
+                        Order newOrder = CreateNewOrder();
+
                         break;
                     }
 
-                case "2":
-                    {
-                        User.printHistory();
-                        break;
-                    }
+                // case "2":
+                //     {
+                //         User.printHistory();
+                //         break;
+                //     }
 
                 case "3":
                     Environment.Exit(0);
@@ -85,6 +86,30 @@ namespace h5chocolate_teambla
             }
 
 
+        }
+        public static Cap CreateCap()
+        {
+            Console.WriteLine("What colour do you want for your cap?");
+            Console.WriteLine("1. Green");
+            Console.WriteLine("2. Blue");
+
+            string choice = Console.ReadLine();
+
+            string colour = "";
+            if (choice == "1") colour = "Green";
+            else if (choice == "2") colour = "Blue";
+
+            Console.WriteLine("What size do you want?");
+            Console.WriteLine("1. Medium");
+            Console.WriteLine("2. Large");
+            choice = Console.ReadLine();
+
+            string size = "";
+            if (choice == "1") size = "Medium";
+            else if (choice == "2") size = "Large";
+
+            Cap newCap = new Cap(colour, size, 50, "Cap");
+            return newCap;
         }
     }
 }

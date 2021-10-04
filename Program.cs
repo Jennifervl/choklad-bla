@@ -11,13 +11,12 @@ namespace h5chocolate_teambla
             User newUser = Menu.CreateNewUser();
             userList.AddUser(newUser);
 
-            foreach (User item in userList.GetList())
+            Menu.ShowMenu();
+
+            foreach (var item in newUser.GetUserHistory())
             {
-                Console.WriteLine(item.Id);
-
+                Console.WriteLine(item);
             }
-
-            Console.WriteLine(newUser.Id);
         }
     }
 }

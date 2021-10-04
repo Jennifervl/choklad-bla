@@ -3,22 +3,27 @@ using System.Collections.Generic;
 
 namespace h5chocolate_teambla
 {
-    class Product 
+    public class Product
     {
         private double price; //får inte vara negativt!
         private string productType; //choklad eller keps?
         // private int productAmount; //hur många? minimum 1, max 10}
 
+        public Product(string ProductType, double Price)
+        {
+            this.productType = ProductType;
+            this.price = Price;
+        }
         public double Price
         {
-            get 
+            get
             {
-            return price;
+                return price;
             }
 
             set
             {
-            price = value;
+                price = value;
             }
         }
 
@@ -42,7 +47,7 @@ namespace h5chocolate_teambla
         //     {
         //         return productAmount;
         //     }
-            
+
         //     set
         //     {
         //         productAmount = value;

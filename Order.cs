@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace h5chocolate_teambla
 {
-    class Order
+    public class Order
     {
         List<Product> productList = new List<Product>();
         static int currentOrderNr = 0;

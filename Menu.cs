@@ -15,6 +15,7 @@ namespace h5chocolate_teambla
 
         public static Order CreateNewOrder()
         {
+            Chocolate newChocolate = new Chocolate(0, "", 0, "");
             Order newOrder = new Order();
             string choice = "";
             while (true)
@@ -27,8 +28,8 @@ namespace h5chocolate_teambla
 
                 if (choice == "1")
                 {
-                    // Chocolate newChocolate = Chocolate.CreateChocolate();
-                    // newOrder.AddProduct(newChocolate);
+                    newChocolate.CreateChocolate();
+                    newOrder.AddProduct(newChocolate);
                 }
                 else if (choice == "2")
                 {
@@ -71,7 +72,14 @@ namespace h5chocolate_teambla
                 case "1":
                     {
                         Order newOrder = CreateNewOrder();
-                        currentUser.UserHistory.AddOrder(newOrder);
+                        newOrder.PrintOrderInfo();
+                        Console.WriteLine("Do you confirm?");
+                        menuChoice = Console.ReadLine();
+
+                        if (menuChoice == "J")
+                        {
+                            currentUser.UserHistory.AddOrder(newOrder);
+                        }
                         break;
                     }
 

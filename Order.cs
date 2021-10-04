@@ -7,7 +7,7 @@ namespace h5chocolate_teambla
     public class Order
     {
         List<Product> productList = new List<Product>();
-        static int currentOrderNr = 0;
+        static int currentOrderNr = 1;
         int orderNr;
         double donation; // sum of all the products.
 
@@ -55,8 +55,7 @@ namespace h5chocolate_teambla
             Console.WriteLine();
             PrintProductList();
             Console.WriteLine();
-            Console.WriteLine("Press any key to continue . . .");
-            Console.ReadKey(true);
+
         }
         public void PrintProductList()
         {
@@ -67,6 +66,11 @@ namespace h5chocolate_teambla
                 {
                     var tempCap = item as Cap;
                     Console.WriteLine($"Product: {tempCap.ProductType}      Size: {tempCap.Size}        Colour: {tempCap.Colour}        Price: {tempCap.Price.ToString("C", CultureInfo.CurrentCulture)}");
+                }
+                else if (item is Chocolate)
+                {
+                    var tempChocolate = item as Chocolate;
+                    Console.WriteLine($"Product: {tempChocolate.ProductType}        Cocoa: {tempChocolate.Cocoa}        Filling: {tempChocolate.Filling}        Price: {tempChocolate.Price.ToString("C", CultureInfo.CurrentCulture)}");
                 }
             }
         }

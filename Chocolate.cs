@@ -42,7 +42,6 @@ namespace h5chocolate_teambla
 
         }
 
-
         public Chocolate CreateChocolate()
         {
             while (true)
@@ -94,7 +93,6 @@ namespace h5chocolate_teambla
                 }
 
                 else Console.WriteLine("You have entered an invalid amount of cocoa content. Only use values between 10 and 90, please.");
-
             }
 
             Chocolate newChocolate = new(Cocoa, Filling, Price, "Chocolate");

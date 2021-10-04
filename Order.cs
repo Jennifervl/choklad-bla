@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace h5chocolate_teambla
 {
@@ -43,6 +44,30 @@ namespace h5chocolate_teambla
                 total += item.Price;
             }
             donation = total;
+        }
+        public void PrintOrderInfo()
+        {
+            Console.WriteLine("Order nr: " + orderNr);
+            Console.WriteLine("Donation amount: " + donation.ToString("C", CultureInfo.CurrentCulture));
+            Console.WriteLine("Donation recipient: " + donationRecipient);
+
+            Console.WriteLine();
+            PrintProductList();
+            Console.WriteLine();
+            Console.WriteLine("Press any key to continue . . .");
+            Console.ReadKey(true);
+        }
+        public void PrintProductList()
+        {
+            Console.WriteLine("Products:");
+            foreach (Product item in productList)
+            {
+                if (item is Cap)
+                {
+                    var tempCap = item as Cap;
+                    Console.WriteLine($"Product: {tempCap.ProductType}      Size: {tempCap.Size}        Colour: {tempCap.Colour}        Price: {tempCap.Price.ToString("C", CultureInfo.CurrentCulture)}");
+                }
+            }
         }
     }
 }

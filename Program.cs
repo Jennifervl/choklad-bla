@@ -6,16 +6,15 @@ namespace h5chocolate_teambla
     {
         static void Main(string[] args)
         {
-            UserList userList = new UserList();
-
-            User newUser = Menu.CreateNewUser();
-            userList.AddUser(newUser);
-
-            Menu.ShowMenu();
-
-            foreach (var item in newUser.GetUserHistory())
+            while (true)
             {
-                Console.WriteLine(item);
+                UserList userList = new UserList();
+                User newUser = Menu.CreateNewUser();
+                userList.AddUser(newUser);
+                while (true)
+                {
+                    Menu.ShowMenu(newUser);
+                }
             }
         }
     }

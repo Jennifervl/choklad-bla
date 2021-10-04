@@ -37,7 +37,7 @@ namespace h5chocolate_teambla
             }
         }
 
-        public Chocolate(int Cocoa, string Filling, double Price, string ProductType="Chocolate")
+        public Chocolate(int Cocoa, string Filling, double Price, string ProductType = "Chocolate") : base(ProductType, Price)
         {
 
         }
@@ -48,59 +48,59 @@ namespace h5chocolate_teambla
             while (true)
             {
                 Console.WriteLine("How much cocoa content would you like your chocolate bar to have? Enter an amount (10-90%).");
-                TestCheck = int.TryParse(UserInput=Console.ReadLine(), out CocoaAmount);
+                TestCheck = int.TryParse(UserInput = Console.ReadLine(), out CocoaAmount);
 
-                    if (CocoaAmount > 9 && CocoaAmount < 91)
+                if (CocoaAmount > 9 && CocoaAmount < 91)
+                {
+                    while (TestCheck)
+                        TestCheck = false;
+
+                    Console.WriteLine("Which filling do you want?\n[1]: Orangutan Orange\n[2]: Powerful Peanutbutter\n[3]: Masterful Maple Syrup\n[4]: Nice Nectarine Surprise\n[5]: No filling, thank you!");
+                    TestCheck = int.TryParse(UserInput = Console.ReadLine(), out Choice);
+
+                    switch (Choice)
                     {
-                        while (TestCheck)
-                        TestCheck=false;
-
-                        Console.WriteLine("Which filling do you want?\n[1]: Orangutan Orange\n[2]: Powerful Peanutbutter\n[3]: Masterful Maple Syrup\n[4]: Nice Nectarine Surprise\n[5]: No filling, thank you!");
-                        TestCheck = int.TryParse(UserInput=Console.ReadLine(), out Choice);
-
-                            switch (Choice)
-                            {
-                            case 1:
+                        case 1:
                             Filling = "Orangutan Orange";
-                            Price = (CocoaAmount*2+75);
+                            Price = (CocoaAmount * 2 + 75);
                             break;
 
-                            case 2:
+                        case 2:
                             Filling = "Powerful Peanutbutter";
-                            Price = (CocoaAmount*2+50);
+                            Price = (CocoaAmount * 2 + 50);
                             break;
 
-                            case 3:
+                        case 3:
                             Filling = "Master Maple Syrup";
-                            Price = (CocoaAmount*2+100);
+                            Price = (CocoaAmount * 2 + 100);
                             break;
 
-                            case 4:
+                        case 4:
                             Filling = "Nice Nectarine Surprise";
-                            Price = (CocoaAmount*2+60);
+                            Price = (CocoaAmount * 2 + 60);
                             break;
 
-                            case 5:
+                        case 5:
                             Filling = "No filling";
-                            Price = (CocoaAmount*2);
+                            Price = (CocoaAmount * 2);
                             break;
 
-                            default:
+                        default:
                             Console.WriteLine("You have entered an invalid choice.");
                             break;
-                            }
-                            Cocoa = CocoaAmount;
-                            break;
                     }
+                    Cocoa = CocoaAmount;
+                    break;
+                }
 
-                        else Console.WriteLine("You have entered an invalid amount of cocoa content. Only use values between 10 and 90, please.");                
-                
+                else Console.WriteLine("You have entered an invalid amount of cocoa content. Only use values between 10 and 90, please.");
+
             }
-            
-            Chocolate newChocolate = new(Cocoa,Filling,Price, "Chocolate");
-            Console.WriteLine($"{Cocoa.ToString()}+{Filling}+{Price}+{ProductType="Chocolate"}");
+
+            Chocolate newChocolate = new(Cocoa, Filling, Price, "Chocolate");
+            Console.WriteLine($"{Cocoa.ToString()}+{Filling}+{Price}+{ProductType = "Chocolate"}");
             return newChocolate;
         }
-       //sätt standardvariabler, ska metod SOM HETER CREATECHOCOLATE(), koppla ihop med Menu för att sätta övriga chokladspecifika variabler med while loop eller switch, med en submeny, skicka tillbaka med return till menyn
+        //sätt standardvariabler, ska metod SOM HETER CREATECHOCOLATE(), koppla ihop med Menu för att sätta övriga chokladspecifika variabler med while loop eller switch, med en submeny, skicka tillbaka med return till menyn
     }
 }

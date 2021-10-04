@@ -19,6 +19,7 @@ namespace h5chocolate_teambla
             string choice = "";
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("[1] Chocolate");
                 Console.WriteLine("[2] Cap");
 
@@ -57,7 +58,7 @@ namespace h5chocolate_teambla
             return newOrder;
         }
 
-        public static void ShowMenu()
+        public static void ShowMenu(User currentUser)
         {
             Console.WriteLine("[1] Place order");
             Console.WriteLine("[2] Order history");
@@ -70,15 +71,18 @@ namespace h5chocolate_teambla
                 case "1":
                     {
                         Order newOrder = CreateNewOrder();
-
+                        currentUser.UserHistory.AddOrder(newOrder);
                         break;
                     }
 
-                // case "2":
-                //     {
-                //         User.printHistory();
-                //         break;
-                //     }
+                case "2":
+                    {
+                        foreach (Order item in currentUser.UserHistory.GetList())
+                        {
+                            item.PrintOrderInfo();
+                        }
+                        break;
+                    }
 
                 case "3":
                     Environment.Exit(0);

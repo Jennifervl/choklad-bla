@@ -14,7 +14,9 @@ namespace h5chocolate_teambla
             foreach (User item in userList.GetList())
             {
                 Console.WriteLine(item.Id);
+
             }
+
             Console.WriteLine(newUser.Id);
         }
     }

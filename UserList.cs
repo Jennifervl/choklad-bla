@@ -10,10 +10,9 @@ namespace h5chocolate_teambla
         {
             userList.Add(user);
         }
-        public IList<User> GetList()
+        public List<User> GetList()
         {
-            IList<User> privateList = userList.AsReadOnly();
-            return privateList;
+            return userList;
         }
     }
 }

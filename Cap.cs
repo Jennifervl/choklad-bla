@@ -1,7 +1,7 @@
 namespace h5chocolate_teambla
 {
-    class Cap
+    class Cap : Product
     {
-
+        
     }
 }

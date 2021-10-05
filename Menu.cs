@@ -49,6 +49,7 @@ namespace h5chocolate_teambla
                     newOrder.AddProduct(newCap);
                 }
 
+                Console.Clear();
                 Console.WriteLine("Do you want to add another Product Y/N?");
                 choice = Console.ReadLine().ToUpper();
 
@@ -56,6 +57,7 @@ namespace h5chocolate_teambla
                 else break;
 
             }
+            Console.Clear();
             Console.WriteLine("Who do you want to donate to?");
             Console.WriteLine("1. WWF");
             Console.WriteLine("2. BRIS");
@@ -74,13 +76,15 @@ namespace h5chocolate_teambla
                 else if (randomizer == 2) newOrder.DonationRecipient = "BRIS";
                 else if (randomizer == 3) newOrder.DonationRecipient = "Röda korset";
             }
-
+            Console.Clear();
             newOrder.setTotal();
             return newOrder;
         }
 
         public static void ShowMenu(User currentUser)
         {
+            Console.Clear();
+            Console.WriteLine("Enter your choice:\n");
             Console.WriteLine("[1] Place an order");
             Console.WriteLine("[2] Browse order history");
             Console.WriteLine("[3] Exit program");
@@ -121,6 +125,7 @@ namespace h5chocolate_teambla
         }
         public static Cap CreateCap()
         {
+            Console.Clear();
             Console.WriteLine("What colour do you want for your cap?");
             Console.WriteLine("1. Green");
             Console.WriteLine("2. Blue");
@@ -131,6 +136,7 @@ namespace h5chocolate_teambla
             if (choice == "1") colour = "Green";
             else if (choice == "2") colour = "Blue";
 
+            Console.Clear();
             Console.WriteLine("What size do you want?");
             Console.WriteLine("1. Medium");
             Console.WriteLine("2. Large");

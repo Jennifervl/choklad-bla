@@ -46,6 +46,7 @@ namespace h5chocolate_teambla
         {
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine("How much cocoa content would you like your chocolate bar to have? Enter an amount (10-90%).");
                 TestCheck = int.TryParse(UserInput = Console.ReadLine(), out CocoaAmount);
 
@@ -54,6 +55,7 @@ namespace h5chocolate_teambla
                     while (TestCheck)
                         TestCheck = false;
 
+                    Console.Clear();
                     Console.WriteLine("Which filling do you want?\n[1]: Orangutan Orange\n[2]: Powerful Peanutbutter\n[3]: Masterful Maple Syrup\n[4]: Nice Nectarine Surprise\n[5]: No filling, thank you!");
                     TestCheck = int.TryParse(UserInput = Console.ReadLine(), out Choice);
 
@@ -92,7 +94,9 @@ namespace h5chocolate_teambla
                     break;
                 }
 
-                else Console.WriteLine("You have entered an invalid amount of cocoa content. Only use values between 10 and 90, please.");
+                else
+                Console.Clear();
+                Console.WriteLine("You have entered an invalid amount of cocoa content. Only use values between 10 and 90, please.");
             }
 
             Chocolate newChocolate = new(Cocoa, Filling, Price, "Chocolate");

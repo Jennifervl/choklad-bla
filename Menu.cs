@@ -104,6 +104,10 @@ namespace h5chocolate_teambla
                         {
                             currentUser.UserHistory.AddOrder(newOrder);
                         }
+                        else
+                        {
+                            Console.WriteLine("--Order cancelled--");
+                        }
                         break;
                     }
 

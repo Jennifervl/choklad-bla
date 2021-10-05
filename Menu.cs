@@ -119,17 +119,23 @@ namespace h5chocolate_teambla
                     {
                         Order newOrder = CreateNewOrder();
                         newOrder.PrintOrderInfo();
-                        Console.WriteLine("Do you confirm Y/N?");
-                        menuChoice = Console.ReadLine().ToUpper();
 
-                        if (menuChoice == "Y")
+                        while (menuChoice != "Y" | menuChoice != "N")
                         {
-                            currentUser.UserHistory.AddOrder(newOrder);
-                        }
-                        else
-                        {
-                            Console.WriteLine("--Order cancelled--");
-                            Console.ReadKey();
+                            Console.WriteLine("Do you confirm Y/N?");
+                            menuChoice = Console.ReadLine().ToUpper();
+
+                            if (menuChoice == "Y")
+                            {
+                                currentUser.UserHistory.AddOrder(newOrder);
+                                break;
+                            }
+                            else if (menuChoice == "N")
+                            {
+                                Console.WriteLine("--Order cancelled--");
+                                Console.ReadKey();
+                                break;
+                            }
                         }
                         break;
                     }
@@ -155,8 +161,6 @@ namespace h5chocolate_teambla
                     Environment.Exit(0);
                     break;
             }
-
-
         }
         public static Cap CreateCap()
         {

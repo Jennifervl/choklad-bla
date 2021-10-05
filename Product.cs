@@ -26,7 +26,6 @@ namespace h5chocolate_teambla
                 price = value;
             }
         }
-
         public string ProductType
         {
             get

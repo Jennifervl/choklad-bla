@@ -32,6 +32,7 @@ namespace h5chocolate_teambla
             while (true)
             {
                 Console.Clear();
+                Console.WriteLine("Choose product:");
                 Console.WriteLine("[1] Chocolate");
                 Console.WriteLine("[2] Cap");
 

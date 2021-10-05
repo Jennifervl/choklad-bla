@@ -9,11 +9,11 @@ namespace h5chocolate_teambla
             while (true)
             {
                 UserList userList = new UserList();
-                User newUser = Menu.CreateNewUser();
-                userList.AddUser(newUser);
+                User currentUser = Menu.LogIn(userList);
+                userList.AddUser(currentUser);
                 while (true)
                 {
-                    Menu.ShowMenu(newUser);
+                    Menu.ShowMenu(currentUser);
                 }
             }
         }

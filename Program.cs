@@ -14,6 +14,7 @@ namespace h5chocolate_teambla
                 {
                     Menu.ShowMenu(currentUser);
                 }
+                //Ny kommentar
             }
         }
     }

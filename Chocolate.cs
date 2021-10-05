@@ -96,7 +96,6 @@ namespace h5chocolate_teambla
             }
 
             Chocolate newChocolate = new(Cocoa, Filling, Price, "Chocolate");
-            Console.WriteLine($"{Cocoa.ToString()}+{Filling}+{Price}+{ProductType = "Chocolate"}");
             return newChocolate;
         }
         //sätt standardvariabler, ska metod SOM HETER CREATECHOCOLATE(), koppla ihop med Menu för att sätta övriga chokladspecifika variabler med while loop eller switch, med en submeny, skicka tillbaka med return till menyn

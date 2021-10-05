@@ -82,7 +82,7 @@ namespace h5chocolate_teambla
                         Order newOrder = CreateNewOrder();
                         newOrder.PrintOrderInfo();
                         Console.WriteLine("Do you confirm J/N?");
-                        menuChoice = Console.ReadLine();
+                        menuChoice = Console.ReadLine().ToUpper();
 
                         if (menuChoice == "J")
                         {

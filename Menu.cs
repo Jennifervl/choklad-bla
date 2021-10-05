@@ -109,10 +109,13 @@ namespace h5chocolate_teambla
 
                 case "2":
                     {
+                        Console.Clear();
                         foreach (Order item in currentUser.UserHistory.GetList())
                         {
                             item.PrintOrderInfo();
                         }
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                         break;
                     }
 

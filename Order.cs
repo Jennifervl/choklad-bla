@@ -70,7 +70,7 @@ namespace h5chocolate_teambla
                 else if (item is Chocolate)
                 {
                     var tempChocolate = item as Chocolate;
-                    Console.WriteLine($"Product: {tempChocolate.ProductType}        Cocoa: {tempChocolate.Cocoa}        Filling: {tempChocolate.Filling}        Price: {tempChocolate.Price.ToString("C", CultureInfo.CurrentCulture)}");
+                    Console.WriteLine($"Product: {tempChocolate.ProductType}        Cocoa: {tempChocolate.CocoaAmount}        Filling: {tempChocolate.Filling}        Price: {tempChocolate.Price.ToString("C", CultureInfo.CurrentCulture)}");
                 }
             }
         }

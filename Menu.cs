@@ -48,10 +48,10 @@ namespace h5chocolate_teambla
                     newOrder.AddProduct(newCap);
                 }
 
-                Console.WriteLine("Do you want to add another Product J/N?");
+                Console.WriteLine("Do you want to add another Product Y/N?");
                 choice = Console.ReadLine().ToUpper();
 
-                if (choice == "J") continue;
+                if (choice == "Y") continue;
                 else break;
 
             }
@@ -92,10 +92,10 @@ namespace h5chocolate_teambla
                     {
                         Order newOrder = CreateNewOrder();
                         newOrder.PrintOrderInfo();
-                        Console.WriteLine("Do you confirm J/N?");
+                        Console.WriteLine("Do you confirm Y/N?");
                         menuChoice = Console.ReadLine().ToUpper();
 
-                        if (menuChoice == "J")
+                        if (menuChoice == "Y")
                         {
                             currentUser.UserHistory.AddOrder(newOrder);
                         }

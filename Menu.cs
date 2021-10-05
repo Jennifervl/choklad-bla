@@ -104,15 +104,23 @@ namespace h5chocolate_teambla
                         {
                             currentUser.UserHistory.AddOrder(newOrder);
                         }
+                        else
+                        {
+                            Console.WriteLine("--Order cancelled--");
+                            Console.ReadKey();
+                        }
                         break;
                     }
 
                 case "2":
                     {
+                        Console.Clear();
                         foreach (Order item in currentUser.UserHistory.GetList())
                         {
                             item.PrintOrderInfo();
                         }
+                        Console.WriteLine("Press any key to continue");
+                        Console.ReadKey();
                         break;
                     }
 
@@ -126,7 +134,7 @@ namespace h5chocolate_teambla
         public static Cap CreateCap()
         {
             Console.Clear();
-            Console.WriteLine("What colour do you want for your cap?");
+            Console.WriteLine("Which colour do you want for your cap?");
             Console.WriteLine("1. Green");
             Console.WriteLine("2. Blue");
 

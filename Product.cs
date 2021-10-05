@@ -40,18 +40,5 @@ namespace h5chocolate_teambla
             }
 
         }
-
-        // public int ProductAmount
-        // {
-        //     get
-        //     {
-        //         return productAmount;
-        //     }
-
-        //     set
-        //     {
-        //         productAmount = value;
-        //     }
-        // }
     }
 }

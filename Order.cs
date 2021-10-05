@@ -59,7 +59,6 @@ namespace h5chocolate_teambla
         }
         public void PrintProductList()
         {
-            Console.WriteLine("Products:");
             foreach (Product item in productList)
             {
                 if (item is Cap)
@@ -70,7 +69,7 @@ namespace h5chocolate_teambla
                 else if (item is Chocolate)
                 {
                     var tempChocolate = item as Chocolate;
-                    Console.WriteLine($"Product: {tempChocolate.ProductType}        Cocoa: {tempChocolate.CocoaAmount}        Filling: {tempChocolate.Filling}        Price: {tempChocolate.Price.ToString("C", CultureInfo.CurrentCulture)}");
+                    Console.WriteLine($"Product: {tempChocolate.ProductType}        Cocoa: {tempChocolate.CocoaAmount}%       Filling: {tempChocolate.Filling}        Price: {tempChocolate.Price.ToString("C", CultureInfo.CurrentCulture)}");
                 }
             }
         }

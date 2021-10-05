@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Threading;
 
 namespace h5chocolate_teambla
 {
@@ -6,8 +8,29 @@ namespace h5chocolate_teambla
     {
         public static User LogIn(UserList list)
         {
-            Console.Write("Enter ID to log in: ");
-            string id = Console.ReadLine();
+
+            string id;
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("-- Enter you 10 digit Personal ID to log in --\n");
+                Console.WriteLine("ID: ");
+                Console.SetCursorPosition(4, 2);
+
+                string input = Console.ReadLine();
+
+                if (input.All(c => Char.IsWhiteSpace(c) || Char.IsLetter(c)) || input.Length != 10)
+                {
+                    Console.WriteLine("Invalid Personal ID");
+                    Thread.Sleep(2000);
+                }
+                else
+                {
+                    id = input;
+                    break;
+                }
+            }
+
             foreach (User user in list.GetList())
             {
                 if (user.Id == id)
@@ -26,13 +49,12 @@ namespace h5chocolate_teambla
 
         public static Order CreateNewOrder()
         {
-            Chocolate newChocolate = new Chocolate(0, "", 0, "");
             Order newOrder = new Order();
             string choice = "";
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Choose product:");
+                Console.WriteLine("-- PRODUCTS --\n");
                 Console.WriteLine("[1] Chocolate");
                 Console.WriteLine("[2] Cap");
 
@@ -58,7 +80,7 @@ namespace h5chocolate_teambla
 
             }
             Console.Clear();
-            Console.WriteLine("Who do you want to donate to?");
+            Console.WriteLine("-- DONATION --\n");
             Console.WriteLine("1. WWF");
             Console.WriteLine("2. BRIS");
             Console.WriteLine("3. Röda korset");
@@ -84,7 +106,7 @@ namespace h5chocolate_teambla
         public static void ShowMenu(User currentUser)
         {
             Console.Clear();
-            Console.WriteLine("Enter your choice:\n");
+            Console.WriteLine("-- MENU --\n");
             Console.WriteLine("[1] Place an order");
             Console.WriteLine("[2] Browse order history");
             Console.WriteLine("[3] Exit program");
@@ -115,15 +137,15 @@ namespace h5chocolate_teambla
                 case "2":
                     {
                         Console.Clear();
-                        
-                        if (currentUser.UserHistory.GetList().Count==0)
-                        Console.WriteLine("You haven't ordered anything yet.");
+
+                        if (currentUser.UserHistory.GetList().Count == 0)
+                            Console.WriteLine("You haven't ordered anything yet.");
 
                         else
-                        foreach (Order item in currentUser.UserHistory.GetList())
-                        {
-                            item.PrintOrderInfo();
-                        }
+                            foreach (Order item in currentUser.UserHistory.GetList())
+                            {
+                                item.PrintOrderInfo();
+                            }
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         break;
@@ -139,9 +161,9 @@ namespace h5chocolate_teambla
         public static Cap CreateCap()
         {
             Console.Clear();
-            Console.WriteLine("Which colour do you want for your cap?");
-            Console.WriteLine("1. Green");
-            Console.WriteLine("2. Blue");
+            Console.WriteLine("-- COLOR --\n");
+            Console.WriteLine("[1] Green");
+            Console.WriteLine("[2] Blue");
 
             string choice = Console.ReadLine();
 
@@ -150,9 +172,9 @@ namespace h5chocolate_teambla
             else if (choice == "2") colour = "Blue";
 
             Console.Clear();
-            Console.WriteLine("What size do you want?");
-            Console.WriteLine("1. Medium");
-            Console.WriteLine("2. Large");
+            Console.WriteLine("-- SIZE --\n");
+            Console.WriteLine("[1] Medium");
+            Console.WriteLine("[2] Large");
             choice = Console.ReadLine();
 
             string size = "";
@@ -172,14 +194,16 @@ namespace h5chocolate_teambla
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("How much cocoa content would you like your chocolate bar to have? Enter an amount (10-90%).");
+                Console.WriteLine("-- Cocoa content in % (10 - 91) --\n");
+                Console.WriteLine("Cocoa: ");
+                Console.SetCursorPosition(7, 2);
 
                 int.TryParse(userInput = Console.ReadLine(), out int CocoaAmount);
 
                 if (CocoaAmount > 9 && CocoaAmount < 91)
                 {
                     Console.Clear();
-                    Console.WriteLine("Which filling do you want?\n[1]: Orangutan Orange\n[2]: Powerful Peanutbutter\n[3]: Masterful Maple Syrup\n[4]: Nice Nectarine Surprise\n[5]: No filling, thank you!");
+                    Console.WriteLine("-- FILLING --\n\n[1]: Orangutan Orange\n[2]: Powerful Peanutbutter\n[3]: Masterful Maple Syrup\n[4]: Nice Nectarine Surprise\n[5]: No filling, thank you!");
                     int.TryParse(userInput = Console.ReadLine(), out int Choice);
 
                     switch (Choice)

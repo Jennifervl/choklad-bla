@@ -80,9 +80,9 @@ namespace h5chocolate_teambla
 
         public static void ShowMenu(User currentUser)
         {
-            Console.WriteLine("[1] Place order");
-            Console.WriteLine("[2] Order history");
-            Console.WriteLine("[3] Exit");
+            Console.WriteLine("[1] Place an order");
+            Console.WriteLine("[2] Browse order history");
+            Console.WriteLine("[3] Exit program");
 
             string menuChoice = Console.ReadLine();
 

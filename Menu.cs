@@ -4,12 +4,23 @@ namespace h5chocolate_teambla
 {
     static class Menu
     {
-        public static User CreateNewUser()
+        public static User LogIn(UserList list)
         {
-            Console.Write("Enter ID: ");
-            string userInput = Console.ReadLine();
-
-            User createdUser = new User(userInput);
+            Console.Write("Enter ID to log in: ");
+            string id = Console.ReadLine();
+            foreach (User user in list.GetList())
+            {
+                if (user.Id == id)
+                {
+                    return user;
+                }
+            }
+            return CreateNewUser(id, list);
+        }
+        public static User CreateNewUser(string id, UserList list)
+        {
+            User createdUser = new User(id);
+            list.AddUser(createdUser);
             return createdUser;
         }
 

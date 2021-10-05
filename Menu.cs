@@ -115,6 +115,11 @@ namespace h5chocolate_teambla
                 case "2":
                     {
                         Console.Clear();
+                        
+                        if (currentUser.UserHistory.GetList().Count==0)
+                        Console.WriteLine("You haven't ordered anything yet.");
+
+                        else
                         foreach (Order item in currentUser.UserHistory.GetList())
                         {
                             item.PrintOrderInfo();

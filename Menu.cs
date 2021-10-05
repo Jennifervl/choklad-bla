@@ -107,6 +107,7 @@ namespace h5chocolate_teambla
                         else
                         {
                             Console.WriteLine("--Order cancelled--");
+                            Console.ReadKey();
                         }
                         break;
                     }

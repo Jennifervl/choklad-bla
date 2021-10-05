@@ -10,7 +10,6 @@ namespace h5chocolate_teambla
             {
                 UserList userList = new UserList();
                 User currentUser = Menu.LogIn(userList);
-                userList.AddUser(currentUser);
                 while (true)
                 {
                     Menu.ShowMenu(currentUser);

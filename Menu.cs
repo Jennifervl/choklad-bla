@@ -54,6 +54,14 @@ namespace h5chocolate_teambla
             if (choice == "1") newOrder.DonationRecipient = "WWF";
             else if (choice == "2") newOrder.DonationRecipient = "BRIS";
             else if (choice == "3") newOrder.DonationRecipient = "Röda korset";
+            else if (choice == "4")
+            {
+                Random random = new Random();
+                int randomizer = random.Next(1, 4);
+                if (randomizer == 1) newOrder.DonationRecipient = "WWF";
+                else if (randomizer == 2) newOrder.DonationRecipient = "BRIS";
+                else if (randomizer == 3) newOrder.DonationRecipient = "Röda korset";
+            }
 
             newOrder.setTotal();
             return newOrder;
@@ -73,7 +81,7 @@ namespace h5chocolate_teambla
                     {
                         Order newOrder = CreateNewOrder();
                         newOrder.PrintOrderInfo();
-                        Console.WriteLine("Do you confirm?");
+                        Console.WriteLine("Do you confirm J/N?");
                         menuChoice = Console.ReadLine();
 
                         if (menuChoice == "J")

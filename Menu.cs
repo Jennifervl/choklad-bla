@@ -40,8 +40,8 @@ namespace h5chocolate_teambla
 
                 if (choice == "1")
                 {
-                    newChocolate.CreateChocolate();
-                    newOrder.AddProduct(newChocolate);
+                    Chocolate newChoco = Menu.CreateChocolate();
+                    newOrder.AddProduct(newChoco);
                 }
                 else if (choice == "2")
                 {
@@ -156,6 +156,69 @@ namespace h5chocolate_teambla
 
             Cap newCap = new Cap(colour, size, 50, "Cap");
             return newCap;
+        }
+        public static Chocolate CreateChocolate()
+        {
+            string filling = "";
+            double price = 0;
+            int cocoa;
+            string userInput;
+
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("How much cocoa content would you like your chocolate bar to have? Enter an amount (10-90%).");
+
+                int.TryParse(userInput = Console.ReadLine(), out int CocoaAmount);
+
+                if (CocoaAmount > 9 && CocoaAmount < 91)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Which filling do you want?\n[1]: Orangutan Orange\n[2]: Powerful Peanutbutter\n[3]: Masterful Maple Syrup\n[4]: Nice Nectarine Surprise\n[5]: No filling, thank you!");
+                    int.TryParse(userInput = Console.ReadLine(), out int Choice);
+
+                    switch (Choice)
+                    {
+                        case 1:
+                            filling = "Orangutan Orange";
+                            price = (CocoaAmount * 2 + 75);
+                            break;
+
+                        case 2:
+                            filling = "Powerful Peanutbutter";
+                            price = (CocoaAmount * 2 + 50);
+                            break;
+
+                        case 3:
+                            filling = "Master Maple Syrup";
+                            price = (CocoaAmount * 2 + 100);
+                            break;
+
+                        case 4:
+                            filling = "Nice Nectarine Surprise";
+                            price = (CocoaAmount * 2 + 60);
+                            break;
+
+                        case 5:
+                            filling = "No filling";
+                            price = (CocoaAmount * 2);
+                            break;
+
+                        default:
+                            Console.WriteLine("You have entered an invalid choice.");
+                            break;
+                    }
+                    cocoa = CocoaAmount;
+                    break;
+                }
+
+                else
+                    Console.Clear();
+                Console.WriteLine("You have entered an invalid amount of cocoa content. Only use values between 10 and 90, please.");
+            }
+
+            Chocolate newChocolate = new(cocoa, filling, price, "Chocolate");
+            return newChocolate;
         }
     }
 }

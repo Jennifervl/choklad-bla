@@ -8,7 +8,6 @@ namespace h5chocolate_teambla
     {
         public static User LogIn(UserList list)
         {
-
             string id;
             while (true)
             {
@@ -30,7 +29,6 @@ namespace h5chocolate_teambla
                     break;
                 }
             }
-
             foreach (User user in list.GetList())
             {
                 if (user.Id == id)
@@ -77,7 +75,6 @@ namespace h5chocolate_teambla
 
                 if (choice == "Y") continue;
                 else break;
-
             }
             Console.Clear();
             Console.WriteLine("-- DONATION --\n");
@@ -102,7 +99,6 @@ namespace h5chocolate_teambla
             newOrder.setTotal();
             return newOrder;
         }
-
         public static void ShowMenu(User currentUser)
         {
             Console.Clear();

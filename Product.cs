@@ -7,8 +7,6 @@ namespace h5chocolate_teambla
     {
         private double price;
         private string productType;
-
-
         public Product(string ProductType, double Price)
         {
             this.productType = ProductType;

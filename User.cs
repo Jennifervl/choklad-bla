@@ -6,7 +6,6 @@ namespace h5chocolate_teambla
     {
         private string id;
         private List<Order> userHistory;
-
         public List<Order> UserHistory
         {
             get
@@ -30,9 +29,6 @@ namespace h5chocolate_teambla
             this.id = id;
             userHistory = new();
         }
-
-
-
         public List<Order> GetUserHistory()
         {
             return userHistory;

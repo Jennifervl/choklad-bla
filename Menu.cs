@@ -76,86 +76,115 @@ namespace h5chocolate_teambla
         }
         public static bool ShowMenu(User currentUser)
         {
-            Console.Clear();
-            Console.WriteLine("-- SELECT MENU CHOICE --\n");
-            Console.WriteLine("[1] Place an order");
-            Console.WriteLine("[2] Browse order history");
-            Console.WriteLine("[3] Log out");
-
-            string menuChoice = Console.ReadLine();
-
-            switch (menuChoice)
+            while (true)
             {
-                case "1":
-                    {
-                        Order newOrder = CreateNewOrder();
-                        newOrder.PrintOrderInfo(currentUser);
+                Console.Clear();
+                Console.WriteLine("-- SELECT MENU CHOICE --\n");
+                Console.WriteLine("[1] Place an order");
+                Console.WriteLine("[2] Browse order history");
+                Console.WriteLine("[3] Log out");
 
-                        while (menuChoice != "Y" | menuChoice != "N")
+                string menuChoice = Console.ReadLine();
+
+                switch (menuChoice)
+                {
+                    case "1":
                         {
-                            Console.WriteLine("-- CONFIRM ORDER Y/N? --");
-                            menuChoice = Console.ReadLine().ToUpper();
+                            Order newOrder = CreateNewOrder();
+                            newOrder.PrintOrderInfo(currentUser);
 
-                            if (menuChoice == "Y")
+                            while (menuChoice != "Y" | menuChoice != "N")
                             {
-                                currentUser.AddOrderToHistory(newOrder);
-                                break;
+                                Console.WriteLine("-- CONFIRM ORDER Y/N? --");
+                                menuChoice = Console.ReadLine().ToUpper();
+
+                                if (menuChoice == "Y")
+                                {
+                                    currentUser.AddOrderToHistory(newOrder);
+                                    break;
+                                }
+                                else if (menuChoice == "N")
+                                {
+                                    Console.WriteLine("-- ORDER CANCELLED --");
+                                    Console.ReadKey();
+                                    break;
+                                }
                             }
-                            else if (menuChoice == "N")
-                            {
-                                Console.WriteLine("-- ORDER CANCELLED --");
-                                Console.ReadKey();
-                                break;
-                            }
+                            break;
                         }
-                        break;
-                    }
 
-                case "2":
-                    {
+                    case "2":
+                        {
+                            Console.Clear();
+
+                            if (currentUser.GetUserHistory().Count == 0)
+                                Console.WriteLine("-- YOU HAVEN'T ORDERED ANYTHING YET --");
+
+                            else
+                                foreach (Order item in currentUser.GetUserHistory())
+                                {
+                                    item.PrintOrderInfo(currentUser);
+                                }
+                            Console.WriteLine("-- PRESS ANY KEY TO CONTINUE --");
+                            Console.ReadKey();
+                            break;
+                        }
+
+                    case "3":
                         Console.Clear();
-
-                        if (currentUser.GetUserHistory().Count == 0)
-                            Console.WriteLine("-- YOU HAVEN'T ORDERED ANYTHING YET --");
-
-                        else
-                            foreach (Order item in currentUser.GetUserHistory())
-                            {
-                                item.PrintOrderInfo(currentUser);
-                            }
-                        Console.WriteLine("-- PRESS ANY KEY TO CONTINUE --");
-                        Console.ReadKey();
-                        break;
-                    }
-
-                case "3":
-                    Console.Clear();
-                    return false;
+                        return false;
+                    default:
+                        continue;
+                }
+                break;
             }
             return true;
         }
         public static Cap CreateCap()
         {
-            Console.Clear();
-            Console.WriteLine("-- CHOOSE COLOUR --\n");
-            Console.WriteLine("[1] Green");
-            Console.WriteLine("[2] Blue");
+            string colour;
+            string choice;
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("-- CHOOSE COLOUR --\n");
+                Console.WriteLine("[1] Green");
+                Console.WriteLine("[2] Blue");
 
-            string choice = Console.ReadLine();
+                choice = Console.ReadLine();
 
-            string colour = "";
-            if (choice == "1") colour = "Green";
-            else if (choice == "2") colour = "Blue";
+                if (choice == "1")
+                {
+                    colour = "Green";
+                    break;
+                }
+                else if (choice == "2")
+                {
+                    colour = "Blue";
+                    break;
+                }
+            }
 
-            Console.Clear();
-            Console.WriteLine("-- CHOOSE SIZE --\n");
-            Console.WriteLine("[1] Medium");
-            Console.WriteLine("[2] Large");
-            choice = Console.ReadLine();
+            string size;
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("-- CHOOSE SIZE --\n");
+                Console.WriteLine("[1] Medium");
+                Console.WriteLine("[2] Large");
+                choice = Console.ReadLine();
 
-            string size = "";
-            if (choice == "1") size = "Medium";
-            else if (choice == "2") size = "Large";
+                if (choice == "1")
+                {
+                    size = "Medium";
+                    break;
+                }
+                else if (choice == "2")
+                {
+                    size = "Large";
+                    break;
+                }
+            }
 
             Cap newCap = new Cap(colour, size, 50, "Cap");
             return newCap;
@@ -178,40 +207,44 @@ namespace h5chocolate_teambla
 
                 if (CocoaAmount > 9 && CocoaAmount < 91)
                 {
-                    Console.Clear();
-                    Console.WriteLine("-- CHOOSE FILLING --\n\n[1] Orangutan Orange\n[2] Powerful Peanutbutter\n[3] Masterful Maple Syrup\n[4] Nice Nectarine Surprise\n[5] No filling");
-                    int.TryParse(userInput = Console.ReadLine(), out int Choice);
-
-                    switch (Choice)
+                    while (true)
                     {
-                        case 1:
-                            filling = "Orangutan Orange";
-                            price = (CocoaAmount * 2 + 75);
-                            break;
+                        Console.Clear();
+                        Console.WriteLine("-- CHOOSE FILLING --\n\n[1] Orangutan Orange\n[2] Powerful Peanutbutter\n[3] Masterful Maple Syrup\n[4] Nice Nectarine Surprise\n[5] No filling");
+                        int.TryParse(userInput = Console.ReadLine(), out int Choice);
 
-                        case 2:
-                            filling = "Powerful Peanutbutter";
-                            price = (CocoaAmount * 2 + 50);
-                            break;
+                        switch (Choice)
+                        {
+                            case 1:
+                                filling = "Orangutan Orange";
+                                price = (CocoaAmount * 2 + 75);
+                                break;
 
-                        case 3:
-                            filling = "Master Maple Syrup";
-                            price = (CocoaAmount * 2 + 100);
-                            break;
+                            case 2:
+                                filling = "Powerful Peanutbutter";
+                                price = (CocoaAmount * 2 + 50);
+                                break;
 
-                        case 4:
-                            filling = "Nice Nectarine Surprise";
-                            price = (CocoaAmount * 2 + 60);
-                            break;
+                            case 3:
+                                filling = "Master Maple Syrup";
+                                price = (CocoaAmount * 2 + 100);
+                                break;
 
-                        case 5:
-                            filling = "No filling";
-                            price = (CocoaAmount * 2);
-                            break;
+                            case 4:
+                                filling = "Nice Nectarine Surprise";
+                                price = (CocoaAmount * 2 + 60);
+                                break;
 
-                        default:
-                            Console.WriteLine("-- YOU HAVE ENTERED AN INVALID CHOICE --");
-                            break;
+                            case 5:
+                                filling = "No filling";
+                                price = (CocoaAmount * 2);
+                                break;
+
+                            default:
+                                Console.WriteLine("-- YOU HAVE ENTERED AN INVALID CHOICE --");
+                                continue;
+                        }
+                        break;
                     }
                     cocoa = CocoaAmount;
                     break;

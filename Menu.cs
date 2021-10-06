@@ -83,20 +83,20 @@ namespace h5chocolate_teambla
             Console.WriteLine("-- DONATION --\n");
             Console.WriteLine("1. WWF");
             Console.WriteLine("2. BRIS");
-            Console.WriteLine("3. Röda korset");
+            Console.WriteLine("3. Red Cross");
             Console.WriteLine("4. Random");
             choice = Console.ReadLine();
 
             if (choice == "1") newOrder.DonationRecipient = "WWF";
             else if (choice == "2") newOrder.DonationRecipient = "BRIS";
-            else if (choice == "3") newOrder.DonationRecipient = "Röda korset";
+            else if (choice == "3") newOrder.DonationRecipient = "Red Cross";
             else if (choice == "4")
             {
                 Random random = new Random();
                 int randomizer = random.Next(1, 4);
                 if (randomizer == 1) newOrder.DonationRecipient = "WWF";
                 else if (randomizer == 2) newOrder.DonationRecipient = "BRIS";
-                else if (randomizer == 3) newOrder.DonationRecipient = "Röda korset";
+                else if (randomizer == 3) newOrder.DonationRecipient = "Red Cross";
             }
             Console.Clear();
             newOrder.setTotal();

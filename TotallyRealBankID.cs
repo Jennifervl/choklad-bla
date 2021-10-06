@@ -7,44 +7,71 @@ namespace h5chocolate_teambla
     class TotallyRealBankID
     {
         internal static User LogIn(UserList list)
+        {
+
+            string id;
+            while (true)
             {
+                Console.Clear();
+                Console.WriteLine("-- Enter your 10 digit Personal ID to log in --\n");
+                Console.WriteLine("Personal ID: ");
+                Console.SetCursorPosition(13, 2);
 
-                string id;
-                while (true)
+                string input = Console.ReadLine();
+                if (IsValidID(Convert.ToInt64(input)) == false)
+                    continue;
+
+                if (input.All(c => Char.IsWhiteSpace(c) || Char.IsLetter(c)) || input.Length != 10)
                 {
-                    Console.Clear();
-                    Console.WriteLine("-- Enter your 10 digit Personal ID to log in --\n");
-                    Console.WriteLine("Personal ID: ");
-                    Console.SetCursorPosition(13, 2);
-
-                    string input = Console.ReadLine();
-
-                    if (input.All(c => Char.IsWhiteSpace(c) || Char.IsLetter(c)) || input.Length != 10)
-                    {
-                        Console.WriteLine("Invalid Personal ID");
-                        Thread.Sleep(2000);
-                    }
-                    else
-                    {
-                        id = input;
-                        break;
-                    }
+                    Console.WriteLine("Invalid Personal ID");
+                    Thread.Sleep(2000);
                 }
-
-                foreach (User user in list.GetList())
+                else
                 {
-                    if (user.Id == id)
-                    {
-                        return user;
-                    }
+                    id = input;
+                    break;
                 }
-                return CreateNewUser(id, list);
             }
-            private static User CreateNewUser(string id, UserList list)
+
+            foreach (User user in list.GetList())
             {
-                User createdUser = new User(id);
-                list.AddUser(createdUser);
-                return createdUser;
+                if (user.Id == id)
+                {
+                    return user;
+                }
             }
+            return CreateNewUser(id, list);
+        }
+        private static User CreateNewUser(string id, UserList list)
+        {
+            User createdUser = new User(id);
+            list.AddUser(createdUser);
+            return createdUser;
+        }
+
+        public static bool IsValidID(long id)
+        {
+            if (!(id.ToString().Length == 10))
+                return false;
+
+            string birthdate = id.ToString().Substring(0, 6);
+            string dateString = string.Join('/', birthdate.Substring(0, 2), birthdate.Substring(2, 2), birthdate.Substring(4, 2));
+
+            DateTime parsedDate;
+
+            try
+            {
+                parsedDate = DateTime.Parse(dateString);
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+
+            if (parsedDate > DateTime.Now)
+                return false;
+
+            return true;
+        }
     }
 }

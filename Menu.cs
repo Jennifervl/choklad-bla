@@ -12,30 +12,44 @@ namespace h5chocolate_teambla
             string choice = "";
             while (true)
             {
-                Console.Clear();
-                Console.WriteLine("-- CHOOSE A PRODUCT --\n");
-                Console.WriteLine("[1] Chocolate");
-                Console.WriteLine("[2] Cap");
-
-                choice = Console.ReadLine();
-
-                if (choice == "1")
+                while (true)
                 {
-                    Chocolate newChoco = Menu.CreateChocolate();
-                    newOrder.AddProduct(newChoco);
+                    Console.Clear();
+                    Console.WriteLine("-- CHOOSE A PRODUCT --\n");
+                    Console.WriteLine("[1] Chocolate");
+                    Console.WriteLine("[2] Cap");
+
+                    choice = Console.ReadLine();
+
+                    if (choice == "1")
+                    {
+                        Chocolate newChoco = Menu.CreateChocolate();
+                        newOrder.AddProduct(newChoco);
+                        break;
+
+                    }
+                    else if (choice == "2")
+                    {
+                        Cap newCap = Menu.CreateCap();
+                        newOrder.AddProduct(newCap);
+                        break;
+                    }
+                    else continue;
                 }
-                else if (choice == "2")
+                while (true)
                 {
-                    Cap newCap = Menu.CreateCap();
-                    newOrder.AddProduct(newCap);
+                    Console.Clear();
+                    Console.WriteLine("-- DO YOU WANT TO ADD ANOTHER PRODUCT Y/N? --");
+                    choice = Console.ReadLine().ToUpper();
+                    if (choice == "Y") continue;
+
+                    else if (choice == "N")
+                    {
+                        break;
+                    }
+                    else continue;
                 }
-
-                Console.Clear();
-                Console.WriteLine("-- DO YOU WANT TO ADD ANOTHER PRODUCT Y/N? --");
-                choice = Console.ReadLine().ToUpper();
-
-                if (choice == "Y") continue;
-                else break;
+                break;
             }
             Console.Clear();
             Console.WriteLine("-- SELECT DONATION RECIPIENT --\n");
@@ -60,13 +74,13 @@ namespace h5chocolate_teambla
             newOrder.setTotal();
             return newOrder;
         }
-        public static void ShowMenu(User currentUser)
+        public static bool ShowMenu(User currentUser)
         {
             Console.Clear();
             Console.WriteLine("-- SELECT MENU CHOICE --\n");
             Console.WriteLine("[1] Place an order");
             Console.WriteLine("[2] Browse order history");
-            Console.WriteLine("[3] Exit program");
+            Console.WriteLine("[3] Log out");
 
             string menuChoice = Console.ReadLine();
 
@@ -116,9 +130,9 @@ namespace h5chocolate_teambla
 
                 case "3":
                     Console.Clear();
-                    Environment.Exit(0);
-                    break;
+                    return false;
             }
+            return true;
         }
         public static Cap CreateCap()
         {

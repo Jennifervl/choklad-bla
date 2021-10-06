@@ -6,13 +6,14 @@ namespace h5chocolate_teambla
     {
         static void Main(string[] args)
         {
+            UserList userList = new UserList();
             while (true)
             {
-                UserList userList = new UserList();
                 User currentUser = TotallyRealBankID.LogIn(userList);
                 while (true)
                 {
-                    Menu.ShowMenu(currentUser);
+                    bool run = Menu.ShowMenu(currentUser);
+                    if (run == false) break;
                 }
             }
         }

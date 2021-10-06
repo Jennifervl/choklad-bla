@@ -118,7 +118,7 @@ namespace h5chocolate_teambla
                 case "1":
                     {
                         Order newOrder = CreateNewOrder();
-                        newOrder.PrintOrderInfo();
+                        newOrder.PrintOrderInfo(currentUser);
 
                         while (menuChoice != "Y" | menuChoice != "N")
                         {
@@ -150,7 +150,7 @@ namespace h5chocolate_teambla
                         else
                             foreach (Order item in currentUser.UserHistory.GetList())
                             {
-                                item.PrintOrderInfo();
+                                item.PrintOrderInfo(currentUser);
                             }
                         Console.WriteLine("Press any key to continue");
                         Console.ReadKey();

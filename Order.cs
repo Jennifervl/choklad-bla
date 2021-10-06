@@ -63,12 +63,12 @@ namespace h5chocolate_teambla
                 if (item is Cap)
                 {
                     var tempCap = item as Cap;
-                    Console.WriteLine($"Product: {tempCap.ProductType}      Size: {tempCap.Size}        Colour: {tempCap.Colour}        Price: {tempCap.Price.ToString("C", CultureInfo.CurrentCulture)}");
+                    Console.WriteLine($"Product: {tempCap.ProductType}".PadRight(25) + $"Size: {tempCap.Size}".PadRight(25) + $"Colour: {tempCap.Colour}".PadRight(35) + $"Price: {tempCap.Price.ToString("C", CultureInfo.CurrentCulture)}");
                 }
                 else if (item is Chocolate)
                 {
                     var tempChocolate = item as Chocolate;
-                    Console.WriteLine($"Product: {tempChocolate.ProductType}        Cocoa content: {tempChocolate.CocoaAmount}%       Filling: {tempChocolate.Filling}        Price: {tempChocolate.Price.ToString("C", CultureInfo.CurrentCulture)}");
+                    Console.WriteLine($"Product: {tempChocolate.ProductType}".PadRight(25) + $"Cocoa content: {tempChocolate.CocoaAmount}%".PadRight(25) + $"Filling: {tempChocolate.Filling}".PadRight(35) + $"Price: {tempChocolate.Price.ToString("C", CultureInfo.CurrentCulture)}");
                 }
             }
         }

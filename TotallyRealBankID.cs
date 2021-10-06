@@ -6,16 +6,16 @@ namespace h5chocolate_teambla
 {
     class TotallyRealBankID
     {
-        public static User LogIn(UserList list)
+        internal static User LogIn(UserList list)
             {
 
                 string id;
                 while (true)
                 {
                     Console.Clear();
-                    Console.WriteLine("-- Enter you 10 digit Personal ID to log in --\n");
-                    Console.WriteLine("ID: ");
-                    Console.SetCursorPosition(4, 2);
+                    Console.WriteLine("-- Enter your 10 digit Personal ID to log in --\n");
+                    Console.WriteLine("Personal ID: ");
+                    Console.SetCursorPosition(13, 2);
 
                     string input = Console.ReadLine();
 
@@ -40,7 +40,7 @@ namespace h5chocolate_teambla
                 }
                 return CreateNewUser(id, list);
             }
-            public static User CreateNewUser(string id, UserList list)
+            private static User CreateNewUser(string id, UserList list)
             {
                 User createdUser = new User(id);
                 list.AddUser(createdUser);

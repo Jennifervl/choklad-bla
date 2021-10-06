@@ -189,40 +189,44 @@ namespace h5chocolate_teambla
 
                 if (CocoaAmount > 9 && CocoaAmount < 91)
                 {
-                    Console.Clear();
-                    Console.WriteLine("-- CHOOSE FILLING --\n\n[1] Orangutan Orange\n[2] Powerful Peanutbutter\n[3] Masterful Maple Syrup\n[4] Nice Nectarine Surprise\n[5] No filling");
-                    int.TryParse(userInput = Console.ReadLine(), out int Choice);
-
-                    switch (Choice)
+                    while (true)
                     {
-                        case 1:
-                            filling = "Orangutan Orange";
-                            price = (CocoaAmount * 2 + 75);
-                            break;
+                        Console.Clear();
+                        Console.WriteLine("-- CHOOSE FILLING --\n\n[1] Orangutan Orange\n[2] Powerful Peanutbutter\n[3] Masterful Maple Syrup\n[4] Nice Nectarine Surprise\n[5] No filling");
+                        int.TryParse(userInput = Console.ReadLine(), out int Choice);
 
-                        case 2:
-                            filling = "Powerful Peanutbutter";
-                            price = (CocoaAmount * 2 + 50);
-                            break;
+                        switch (Choice)
+                        {
+                            case 1:
+                                filling = "Orangutan Orange";
+                                price = (CocoaAmount * 2 + 75);
+                                break;
 
-                        case 3:
-                            filling = "Master Maple Syrup";
-                            price = (CocoaAmount * 2 + 100);
-                            break;
+                            case 2:
+                                filling = "Powerful Peanutbutter";
+                                price = (CocoaAmount * 2 + 50);
+                                break;
 
-                        case 4:
-                            filling = "Nice Nectarine Surprise";
-                            price = (CocoaAmount * 2 + 60);
-                            break;
+                            case 3:
+                                filling = "Master Maple Syrup";
+                                price = (CocoaAmount * 2 + 100);
+                                break;
 
-                        case 5:
-                            filling = "No filling";
-                            price = (CocoaAmount * 2);
-                            break;
+                            case 4:
+                                filling = "Nice Nectarine Surprise";
+                                price = (CocoaAmount * 2 + 60);
+                                break;
 
-                        default:
-                            Console.WriteLine("-- YOU HAVE ENTERED AN INVALID CHOICE --");
-                            break;
+                            case 5:
+                                filling = "No filling";
+                                price = (CocoaAmount * 2);
+                                break;
+
+                            default:
+                                Console.WriteLine("-- YOU HAVE ENTERED AN INVALID CHOICE --");
+                                continue;
+                        }
+                        break;
                     }
                     cocoa = CocoaAmount;
                     break;

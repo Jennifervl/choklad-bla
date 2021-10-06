@@ -5,13 +5,13 @@ namespace h5chocolate_teambla
     public class User
     {
         private string id;
-        private OrderHistory userHistory = new OrderHistory();
+        private List<Order> userHistory;
 
-        public OrderHistory UserHistory
+        public List<Order> UserHistory
         {
             get
             {
-                return userHistory;
+                return UserHistory;
             }
         }
         public string Id
@@ -28,11 +28,18 @@ namespace h5chocolate_teambla
         public User(string id)
         {
             this.id = id;
+            userHistory = new();
         }
+
+
 
         public List<Order> GetUserHistory()
         {
-            return userHistory.OrderList;
+            return userHistory;
+        }
+        public void AddOrderToHistory(Order order)
+        {
+            userHistory.Add(order);
         }
     }
 }

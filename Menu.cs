@@ -127,7 +127,7 @@ namespace h5chocolate_teambla
 
                             if (menuChoice == "Y")
                             {
-                                currentUser.UserHistory.AddOrder(newOrder);
+                                currentUser.AddOrderToHistory(newOrder);
                                 break;
                             }
                             else if (menuChoice == "N")
@@ -144,11 +144,11 @@ namespace h5chocolate_teambla
                     {
                         Console.Clear();
 
-                        if (currentUser.UserHistory.GetList().Count == 0)
+                        if (currentUser.GetUserHistory().Count == 0)
                             Console.WriteLine("You haven't ordered anything yet.");
 
                         else
-                            foreach (Order item in currentUser.UserHistory.GetList())
+                            foreach (Order item in currentUser.GetUserHistory())
                             {
                                 item.PrintOrderInfo(currentUser);
                             }

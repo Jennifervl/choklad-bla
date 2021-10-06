@@ -124,26 +124,49 @@ namespace h5chocolate_teambla
         }
         public static Cap CreateCap()
         {
-            Console.Clear();
-            Console.WriteLine("-- CHOOSE COLOUR --\n");
-            Console.WriteLine("[1] Green");
-            Console.WriteLine("[2] Blue");
+            string colour;
+            string choice;
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("-- CHOOSE COLOUR --\n");
+                Console.WriteLine("[1] Green");
+                Console.WriteLine("[2] Blue");
 
-            string choice = Console.ReadLine();
+                choice = Console.ReadLine();
 
-            string colour = "";
-            if (choice == "1") colour = "Green";
-            else if (choice == "2") colour = "Blue";
+                if (choice == "1")
+                {
+                    colour = "Green";
+                    break;
+                }
+                else if (choice == "2")
+                {
+                    colour = "Blue";
+                    break;
+                }
+            }
 
-            Console.Clear();
-            Console.WriteLine("-- CHOOSE SIZE --\n");
-            Console.WriteLine("[1] Medium");
-            Console.WriteLine("[2] Large");
-            choice = Console.ReadLine();
+            string size;
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("-- CHOOSE SIZE --\n");
+                Console.WriteLine("[1] Medium");
+                Console.WriteLine("[2] Large");
+                choice = Console.ReadLine();
 
-            string size = "";
-            if (choice == "1") size = "Medium";
-            else if (choice == "2") size = "Large";
+                if (choice == "1")
+                {
+                    size = "Medium";
+                    break;
+                }
+                else if (choice == "2")
+                {
+                    size = "Large";
+                    break;
+                }
+            }
 
             Cap newCap = new Cap(colour, size, 50, "Cap");
             return newCap;

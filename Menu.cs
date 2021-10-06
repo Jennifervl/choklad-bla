@@ -62,13 +62,13 @@ namespace h5chocolate_teambla
             return newOrder;
         }
 
-        public static void ShowMenu(User currentUser)
+        public static bool ShowMenu(User currentUser)
         {
             Console.Clear();
             Console.WriteLine("-- SELECT MENU CHOICE --\n");
             Console.WriteLine("[1] Place an order");
             Console.WriteLine("[2] Browse order history");
-            Console.WriteLine("[3] Exit program");
+            Console.WriteLine("[3] Log out");
 
             string menuChoice = Console.ReadLine();
 
@@ -118,9 +118,9 @@ namespace h5chocolate_teambla
 
                 case "3":
                     Console.Clear();
-                    Environment.Exit(0);
-                    break;
+                    return false;
             }
+            return true;
         }
         public static Cap CreateCap()
         {

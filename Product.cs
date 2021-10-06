@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace h5chocolate_teambla
 {
-    public class Product
+    public abstract class Product
     {
-        private double price; //får inte vara negativt!
-        private string productType; //choklad eller keps?
-        // private int productAmount; //hur många? minimum 1, max 10}
+        private double price;
+        private string productType;
+
 
         public Product(string ProductType, double Price)
         {

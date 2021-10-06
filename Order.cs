@@ -46,7 +46,7 @@ namespace h5chocolate_teambla
         {
 
             Console.WriteLine("Order nr: " + orderNr);
-            Console.WriteLine("User ID:" + currentUser.Id);
+            Console.WriteLine("Customer ID: " + currentUser.Id);
             Console.WriteLine("Donation amount: " + donation.ToString("C", CultureInfo.CurrentCulture));
             Console.WriteLine("Donation recipient: " + donationRecipient);
             Console.WriteLine("Time of order: " + dateTime.ToString("MM/dd/yyyy HH:mm"));

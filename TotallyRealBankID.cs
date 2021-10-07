@@ -30,12 +30,37 @@ namespace h5chocolate_teambla
             return createdUser;
         }
 
-        private static bool IsValidID(long id) // Ska vara private?
+        private static bool IsValidID(long id)
         {
-            if (!(id.ToString().Length == 10))
+
+            string idString = id.ToString();
+            if (!(idString.Length == 10))
                 return false;
 
-            string birthdate = id.ToString().Substring(0, 6);
+            int controlNumber = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                int multiplicator;
+
+                if (i % 2 == 0)
+                {
+                    multiplicator = 2;
+                }
+                else
+                {
+                    multiplicator = 1;
+                }
+                int tempNumber = Int32.Parse(idString.Substring(i, 1)) * multiplicator;
+                for (int k = 0; k < tempNumber.ToString().Length; k++)
+                {
+                    string tempNumberString = tempNumber.ToString().Substring(k, 1);
+                    controlNumber += Int32.Parse(tempNumberString);
+                }
+            }
+
+            if (controlNumber % 10 != 0) return false;
+
+            string birthdate = idString.Substring(0, 6);
             string dateString = string.Join('/', birthdate.Substring(0, 2), birthdate.Substring(2, 2), birthdate.Substring(4, 2));
 
             DateTime parsedDate;

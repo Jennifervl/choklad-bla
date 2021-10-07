@@ -7,13 +7,13 @@ namespace h5chocolate_teambla
     {
         List<User> userList = new List<User>();
 
-        List<User> listOfUsers = new();
+        //List<User> listOfUsers = new();
 
         public User LogIn(long parsedInput)
         {
             if (IsValidID(Convert.ToInt64(parsedInput)) == false) throw new ArgumentException("Invalid ID");
 
-            foreach (User user in listOfUsers)
+            foreach (User user in userList)
             {
                 if (user.Id == parsedInput.ToString())
                 {

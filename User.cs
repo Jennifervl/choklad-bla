@@ -6,6 +6,7 @@ namespace h5chocolate_teambla
     {
         private string id;
         private List<Order> userHistory;
+
         public List<Order> UserHistory
         {
             get
@@ -13,6 +14,7 @@ namespace h5chocolate_teambla
                 return UserHistory;
             }
         }
+        
         public string Id
         {
             get
@@ -24,15 +26,18 @@ namespace h5chocolate_teambla
                 id = value;
             }
         }
+
         public User(string id)
         {
             this.id = id;
             userHistory = new();
         }
+
         public List<Order> GetUserHistory()
         {
             return userHistory;
         }
+
         public void AddOrderToHistory(Order order)
         {
             userHistory.Add(order);

@@ -2,7 +2,7 @@ namespace h5chocolate_teambla
 {
     class Cap : Product
     {
-        string colour;//sätt standardvariabler, ska metod för att sätta övriga kepspecifika variabler med while loop eller switch, med en submeny
+        string colour;
         string size;
 
         public string Size { get => size; set => size = value; }

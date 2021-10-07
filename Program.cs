@@ -11,7 +11,7 @@ namespace h5chocolate_teambla
             {
                 User currentUser = TotallyRealBankID.LogIn(userList);
                 while (true)
-                {
+                {   
                     bool run = Menu.ShowMenu(currentUser);
                     if (run == false) break;
                 }

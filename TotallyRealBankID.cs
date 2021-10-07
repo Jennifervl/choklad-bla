@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace h5chocolate_teambla
 {
-    class TotallyRealBankID
+    class TotallyRealBankID 
     {
         internal static User LogIn(UserList list)
         {
@@ -42,6 +42,7 @@ namespace h5chocolate_teambla
             }
             return CreateNewUser(id, list);
         }
+        
         private static User CreateNewUser(string id, UserList list)
         {
             User createdUser = new User(id);
@@ -49,7 +50,7 @@ namespace h5chocolate_teambla
             return createdUser;
         }
 
-        public static bool IsValidID(long id)
+        public static bool IsValidID(long id) // Ska vara private?
         {
             if (!(id.ToString().Length == 10))
                 return false;

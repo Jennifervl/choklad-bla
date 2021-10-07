@@ -5,7 +5,9 @@ namespace h5chocolate_teambla
     class Chocolate : Product
     {
         private int cocoaAmount;
+
         private string filling;
+
         public int CocoaAmount
         {
             get
@@ -17,6 +19,7 @@ namespace h5chocolate_teambla
                 cocoaAmount = value;
             }
         }
+
         public string Filling
         {
             get
@@ -28,10 +31,12 @@ namespace h5chocolate_teambla
                 filling = value;
             }
         }
+
         public Chocolate(int Cocoa, string Filling, double Price, string ProductType) : base(ProductType, Price)
         {
             this.cocoaAmount = Cocoa;
             this.filling = Filling;
         }
+        
     }
 }

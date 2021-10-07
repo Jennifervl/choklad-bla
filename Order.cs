@@ -9,9 +9,10 @@ namespace h5chocolate_teambla
         List<Product> productList = new List<Product>();
         static int currentOrderNr = 1;
         int orderNr;
-        double donation; // sum of all the products.
-        string donationRecipient; // oganisation donated to.
+        double donation;
+        string donationRecipient;
         DateTime dateTime;
+
         public string DonationRecipient
         {
             get
@@ -23,17 +24,20 @@ namespace h5chocolate_teambla
                 donationRecipient = value;
             }
         }
+
         public Order()
         {
             orderNr = currentOrderNr;
             currentOrderNr += 1;
             dateTime = DateTime.Now;
         }
+
         public void AddProduct(Product product)
         {
             productList.Add(product);
         }
-        public void setTotal()
+
+        public void SetTotalDonationPrice()
         {
             double total = 0;
             foreach (Product item in productList)
@@ -42,7 +46,8 @@ namespace h5chocolate_teambla
             }
             donation = total;
         }
-        public void PrintOrderInfo(User currentUser)
+
+        public void PrintOrderInfo(User currentUser) 
         {
 
             Console.WriteLine("Order nr: " + orderNr);
@@ -56,6 +61,7 @@ namespace h5chocolate_teambla
             Console.WriteLine();
 
         }
+        
         public void PrintProductList()
         {
             foreach (Product item in productList)

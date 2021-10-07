@@ -71,9 +71,10 @@ namespace h5chocolate_teambla
                 else if (randomizer == 3) newOrder.DonationRecipient = "Red Cross";
             }
             Console.Clear();
-            newOrder.setTotal();
+            newOrder.SetTotalDonationPrice();
             return newOrder;
         }
+        
         public static bool ShowMenu(User currentUser)
         {
             while (true)
@@ -140,6 +141,7 @@ namespace h5chocolate_teambla
             }
             return true;
         }
+
         public static Cap CreateCap()
         {
             string colour;
@@ -189,6 +191,7 @@ namespace h5chocolate_teambla
             Cap newCap = new Cap(colour, size, 50, "Cap");
             return newCap;
         }
+
         public static Chocolate CreateChocolate()
         {
             string filling = "";

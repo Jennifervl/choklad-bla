@@ -6,13 +6,11 @@ namespace h5chocolate_teambla
     public abstract class Product
     {
         private double price;
+
         private string productType;
-        public Product(string ProductType, double Price)
-        {
-            this.productType = ProductType;
-            this.price = Price;
-        }
+
         public double Price
+
         {
             get
             {
@@ -24,6 +22,7 @@ namespace h5chocolate_teambla
                 price = value;
             }
         }
+
         public string ProductType
         {
             get
@@ -37,5 +36,12 @@ namespace h5chocolate_teambla
             }
 
         }
+
+         public Product(string productType, double Price)
+        {
+            this.productType = productType;
+            this.price = Price;
+        }
+
     }
 }

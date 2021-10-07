@@ -1,39 +1,26 @@
 using System;
-using System.Linq;
-using System.Threading;
+using System.Collections.Generic;
 
 namespace h5chocolate_teambla
 {
-    class TotallyRealBankID 
+    class TotallyRealBankID
     {
-        internal static User LogIn(UserList list)
+        List<User> listOfUsers = new();
+
+        internal static User LogIn(long parsedInput)
         {
 
             string id;
             while (true)
             {
-                Console.Clear();
-                Console.WriteLine("-- Enter your 10 digit Personal ID to log in --\n");
-                Console.WriteLine("Personal ID: ");
-                Console.SetCursorPosition(13, 2);
-
-                string input = Console.ReadLine();
-                if (IsValidID(Convert.ToInt64(input)) == false)
+                if (IsValidID(Convert.ToInt64(parsedInput)) == false)
                     continue;
-
-                if (input.All(c => Char.IsWhiteSpace(c) || Char.IsLetter(c)) || input.Length != 10)
-                {
-                    Console.WriteLine("Invalid Personal ID");
-                    Thread.Sleep(2000);
-                }
                 else
-                {
-                    id = input;
                     break;
-                }
             }
 
-            foreach (User user in list.GetList())
+
+            foreach (User user in listOfUsers)
             {
                 if (user.Id == id)
                 {
@@ -42,7 +29,7 @@ namespace h5chocolate_teambla
             }
             return CreateNewUser(id, list);
         }
-        
+
         private static User CreateNewUser(string id, UserList list)
         {
             User createdUser = new User(id);
@@ -50,7 +37,7 @@ namespace h5chocolate_teambla
             return createdUser;
         }
 
-        public static bool IsValidID(long id) // Ska vara private?
+        private static bool IsValidID(long id) // Ska vara private?
         {
             if (!(id.ToString().Length == 10))
                 return false;

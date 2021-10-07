@@ -6,6 +6,92 @@ namespace h5chocolate_teambla
 {
     static class Menu
     {
+
+        public static User LoginUser()
+        {
+            string userInput;
+            while (true)
+            {
+                Console.WriteLine("-- Enter your 10 digit Personal ID to log in --\n");
+                Console.WriteLine("Personal ID: ");
+                userInput = Console.ReadLine();
+                if (Int64.TryParse(userInput, out long parsedInput)) continue;
+                else break;
+            }
+
+            return;
+        }
+
+
+
+        public static bool ShowMenu(User currentUser)
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("-- SELECT MENU CHOICE --\n");
+                Console.WriteLine("[1] Place an order");
+                Console.WriteLine("[2] Browse order history");
+                Console.WriteLine("[3] Log out");
+
+                string menuChoice = Console.ReadLine();
+
+                switch (menuChoice)
+                {
+                    case "1":
+                        {
+                            Order newOrder = CreateNewOrder();
+                            while (menuChoice != "Y" | menuChoice != "N")
+                            {
+                                Console.Clear();
+                                newOrder.PrintOrderInfo(currentUser);
+                                Console.WriteLine("-- CONFIRM ORDER Y/N? --");
+                                menuChoice = Console.ReadLine().ToUpper();
+
+                                if (menuChoice == "Y")
+                                {
+                                    currentUser.AddOrderToHistory(newOrder);
+                                    break;
+                                }
+                                else if (menuChoice == "N")
+                                {
+                                    Console.WriteLine("-- ORDER CANCELLED --");
+                                    Console.ReadKey();
+                                    break;
+                                }
+                            }
+
+                            break;
+                        }
+
+                    case "2":
+                        {
+                            Console.Clear();
+
+                            if (currentUser.GetUserHistory().Count == 0)
+                                Console.WriteLine("-- YOU HAVEN'T ORDERED ANYTHING YET --");
+
+                            else
+                                foreach (Order item in currentUser.GetUserHistory())
+                                {
+                                    item.PrintOrderInfo(currentUser);
+                                }
+                            Console.WriteLine("-- PRESS ANY KEY TO CONTINUE --");
+                            Console.ReadKey();
+                            break;
+                        }
+
+                    case "3":
+                        Console.Clear();
+                        return false;
+                    default:
+                        continue;
+                }
+                break;
+            }
+            return true;
+        }
+
         public static Order CreateNewOrder()
         {
             Order newOrder = new Order();
@@ -41,7 +127,7 @@ namespace h5chocolate_teambla
                     Console.Clear();
                     Console.WriteLine("-- DO YOU WANT TO ADD ANOTHER PRODUCT Y/N? --");
                     choice = Console.ReadLine().ToUpper();
-                    if (choice == "Y") continue;
+                    if (choice == "Y") break;
 
                     else if (choice == "N")
                     {
@@ -49,97 +135,38 @@ namespace h5chocolate_teambla
                     }
                     else continue;
                 }
-                break;
+                if (choice == "Y") continue;
+                else break;
             }
-            Console.Clear();
-            Console.WriteLine("-- SELECT DONATION RECIPIENT --\n");
-            Console.WriteLine("1. WWF");
-            Console.WriteLine("2. BRIS");
-            Console.WriteLine("3. Red Cross");
-            Console.WriteLine("4. Random");
-            choice = Console.ReadLine();
 
-            if (choice == "1") newOrder.DonationRecipient = "WWF";
-            else if (choice == "2") newOrder.DonationRecipient = "BRIS";
-            else if (choice == "3") newOrder.DonationRecipient = "Red Cross";
-            else if (choice == "4")
-            {
-                Random random = new Random();
-                int randomizer = random.Next(1, 4);
-                if (randomizer == 1) newOrder.DonationRecipient = "WWF";
-                else if (randomizer == 2) newOrder.DonationRecipient = "BRIS";
-                else if (randomizer == 3) newOrder.DonationRecipient = "Red Cross";
-            }
-            Console.Clear();
-            newOrder.SetTotalDonationPrice();
-            return newOrder;
-        }
-        
-        public static bool ShowMenu(User currentUser)
-        {
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("-- SELECT MENU CHOICE --\n");
-                Console.WriteLine("[1] Place an order");
-                Console.WriteLine("[2] Browse order history");
-                Console.WriteLine("[3] Log out");
+                Console.WriteLine("-- SELECT DONATION RECIPIENT --\n");
+                Console.WriteLine("1. WWF");
+                Console.WriteLine("2. BRIS");
+                Console.WriteLine("3. Red Cross");
+                Console.WriteLine("4. Random");
+                choice = Console.ReadLine();
 
-                string menuChoice = Console.ReadLine();
-
-                switch (menuChoice)
+                if (choice == "1") newOrder.DonationRecipient = "WWF";
+                else if (choice == "2") newOrder.DonationRecipient = "BRIS";
+                else if (choice == "3") newOrder.DonationRecipient = "Red Cross";
+                else if (choice == "4")
                 {
-                    case "1":
-                        {
-                            Order newOrder = CreateNewOrder();
-                            newOrder.PrintOrderInfo(currentUser);
-
-                            while (menuChoice != "Y" | menuChoice != "N")
-                            {
-                                Console.WriteLine("-- CONFIRM ORDER Y/N? --");
-                                menuChoice = Console.ReadLine().ToUpper();
-
-                                if (menuChoice == "Y")
-                                {
-                                    currentUser.AddOrderToHistory(newOrder);
-                                    break;
-                                }
-                                else if (menuChoice == "N")
-                                {
-                                    Console.WriteLine("-- ORDER CANCELLED --");
-                                    Console.ReadKey();
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-
-                    case "2":
-                        {
-                            Console.Clear();
-
-                            if (currentUser.GetUserHistory().Count == 0)
-                                Console.WriteLine("-- YOU HAVEN'T ORDERED ANYTHING YET --");
-
-                            else
-                                foreach (Order item in currentUser.GetUserHistory())
-                                {
-                                    item.PrintOrderInfo(currentUser);
-                                }
-                            Console.WriteLine("-- PRESS ANY KEY TO CONTINUE --");
-                            Console.ReadKey();
-                            break;
-                        }
-
-                    case "3":
-                        Console.Clear();
-                        return false;
-                    default:
-                        continue;
+                    Random random = new Random();
+                    int randomizer = random.Next(1, 4);
+                    if (randomizer == 1) newOrder.DonationRecipient = "WWF";
+                    else if (randomizer == 2) newOrder.DonationRecipient = "BRIS";
+                    else if (randomizer == 3) newOrder.DonationRecipient = "Red Cross";
                 }
-                break;
+                else continue;
+
+                Console.Clear();
+                newOrder.SetTotalDonationPrice();
+                return newOrder;
+
             }
-            return true;
         }
 
         public static Cap CreateCap()

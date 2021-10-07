@@ -5,35 +5,28 @@ namespace h5chocolate_teambla
 {
     class TotallyRealBankID
     {
+        List<User> userList = new List<User>();
+
         List<User> listOfUsers = new();
 
-        internal static User LogIn(long parsedInput)
+        public User LogIn(long parsedInput)
         {
-
-            string id;
-            while (true)
-            {
-                if (IsValidID(Convert.ToInt64(parsedInput)) == false)
-                    continue;
-                else
-                    break;
-            }
-
+            if (IsValidID(Convert.ToInt64(parsedInput)) == false) throw new ArgumentException("Invalid ID");
 
             foreach (User user in listOfUsers)
             {
-                if (user.Id == id)
+                if (user.Id == parsedInput.ToString())
                 {
                     return user;
                 }
             }
-            return CreateNewUser(id, list);
+            return CreateNewUser(parsedInput.ToString(), userList);
         }
 
-        private static User CreateNewUser(string id, UserList list)
+        private static User CreateNewUser(string id, List<User> list)
         {
             User createdUser = new User(id);
-            list.AddUser(createdUser);
+            list.Add(createdUser);
             return createdUser;
         }
 

@@ -7,19 +7,35 @@ namespace h5chocolate_teambla
     static class Menu
     {
 
-        public static User LoginUser()
+        public static User LoginUser(TotallyRealBankID bankid)
         {
-            string userInput;
             while (true)
             {
-                Console.WriteLine("-- Enter your 10 digit Personal ID to log in --\n");
-                Console.WriteLine("Personal ID: ");
-                userInput = Console.ReadLine();
-                if (Int64.TryParse(userInput, out long parsedInput)) continue;
-                else break;
-            }
+                string userInput;
+                long parsedInput;
+                while (true)
+                {
+                    Console.Clear();
+                    Console.WriteLine("-- Enter your 10 digit Personal ID to log in --\n");
+                    Console.WriteLine("Personal ID: ");
+                    userInput = Console.ReadLine();
+                    if (Int64.TryParse(userInput, out parsedInput) == false) continue;
+                    else break;
+                }
 
-            return;
+                User currentUser;
+
+                try
+                {
+                    currentUser = bankid.LogIn(parsedInput);
+                }
+                catch (ArgumentException)
+                {
+                    continue;
+                }
+
+                return currentUser;
+            }
         }
 
 

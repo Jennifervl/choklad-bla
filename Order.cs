@@ -46,8 +46,8 @@ namespace h5chocolate_teambla
             }
             donation = total;
         }
-
-        public void PrintOrderInfo(User currentUser) 
+        //Flytta de två metoderna till anv.gränssnittet, lägg till properties med get
+        public void PrintOrderInfo(User currentUser)
         {
 
             Console.WriteLine("Order nr: " + orderNr);
@@ -61,7 +61,7 @@ namespace h5chocolate_teambla
             Console.WriteLine();
 
         }
-        
+
         public void PrintProductList()
         {
             foreach (Product item in productList)

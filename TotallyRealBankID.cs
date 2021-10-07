@@ -7,7 +7,12 @@ namespace h5chocolate_teambla
     {
         List<User> listOfUsers = new();
 
-        internal static User LogIn(long parsedInput)
+        public void AddUser(User user)
+        {
+            listOfUsers.Add(user);
+        }
+
+        internal User LogIn(long parsedInput)
         {
 
             string id;
@@ -22,18 +27,18 @@ namespace h5chocolate_teambla
 
             foreach (User user in listOfUsers)
             {
-                if (user.Id == id)
+                if (user.Id == parsedInput)
                 {
                     return user;
                 }
             }
-            return CreateNewUser(id, list);
+            return CreateNewUser(parsedInput, listOsUsers);
         }
 
-        private static User CreateNewUser(string id, UserList list)
+        private User CreateNewUser(string id, TotallyRealBankID list)
         {
             User createdUser = new User(id);
-            list.AddUser(createdUser);
+            listOfUsers.AddUser(createdUser);
             return createdUser;
         }
 

@@ -50,7 +50,6 @@ namespace h5chocolate_teambla
                 {
                     multiplicator = 1;
                 }
-                Console.WriteLine(multiplicator);
                 int tempNumber = Int32.Parse(idString.Substring(i, 1)) * multiplicator;
                 for (int k = 0; k < tempNumber.ToString().Length; k++)
                 {

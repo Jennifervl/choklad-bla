@@ -90,7 +90,7 @@ namespace h5chocolate_teambla
                                 foreach (Order item in currentUser.GetUserHistory())
                                 {
 
-                                    PrintFuckyOrder(newOrder, currentUser);
+                                    PrintFuckyOrder(item, currentUser);
                                 }
                             Console.WriteLine("-- PRESS ANY KEY TO CONTINUE --");
                             Console.ReadKey();

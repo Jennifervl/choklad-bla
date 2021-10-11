@@ -39,7 +39,14 @@ namespace h5chocolate_teambla
 
         public DateTime Date
         {
-            get;
+            get
+            {
+                return dateTime;
+            }
+            set
+            {
+                dateTime = DateTime.Now;
+            }
         }
 
 

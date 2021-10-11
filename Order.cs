@@ -43,6 +43,10 @@ namespace h5chocolate_teambla
             {
                 return dateTime;
             }
+            set
+            {
+                dateTime = DateTime.Now;
+            }
         }
 
         public string DonationRecipient

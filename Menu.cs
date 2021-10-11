@@ -40,6 +40,7 @@ namespace h5chocolate_teambla
         public static bool ShowMenu(User currentUser)
         {
 
+
             while (true)
             {
                 Console.Clear();
@@ -56,6 +57,7 @@ namespace h5chocolate_teambla
                     case "1":
                         {
                             Order newOrder = CreateNewOrder();
+
                             while (menuChoice != "Y" | menuChoice != "N")
                             {
                                 Console.Clear();
@@ -316,9 +318,26 @@ namespace h5chocolate_teambla
             Console.WriteLine("Donation recipient: " + newOrder.DonationRecipient);
             Console.WriteLine("Time of order: " + newOrder.GetDateTime.ToString("MM/dd/yyyy HH:mm\n\n"));
 
-            newOrder.PrintProductList();
+            PrintProductList(newOrder);
+        }
 
-
+        public static void PrintProductList(Order order)
+        {
+            {
+                foreach (Product item in order.ProductList)
+                {
+                    if (item is Cap)
+                    {
+                        var tempCap = item as Cap;
+                        Console.WriteLine($"Product: {tempCap.ProductType}".PadRight(25) + $"Size: {tempCap.Size}".PadRight(25) + $"Colour:  {tempCap.Colour}".PadRight(35) + $"Price: {tempCap.Price.ToString("C", CultureInfo.CurrentCulture)}");
+                    }
+                    else if (item is Chocolate)
+                    {
+                        var tempChocolate = item as Chocolate;
+                        Console.WriteLine($"Product: {tempChocolate.ProductType}".PadRight(25) + $"Cocoa content: {tempChocolate.CocoaAmount}%".PadRight(25) + $"Filling: {tempChocolate.Filling}".PadRight(35) + $"Price: {tempChocolate.Price.ToString("C", CultureInfo.CurrentCulture)}");
+                    }
+                }
+            }
         }
     }
 }

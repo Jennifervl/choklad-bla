@@ -13,6 +13,38 @@ namespace h5chocolate_teambla
         string donationRecipient;
         DateTime dateTime;
 
+        public int OrderNr
+        {
+            get
+            {
+                return orderNr;
+            }
+            set
+            {
+                orderNr = value;
+            }
+        }
+
+        public double Donation
+        {
+            get
+            {
+                return donation;
+            }
+            set
+            {
+                donation = value;
+            }
+        }
+
+        public DateTime Date
+        {
+            get;
+        }
+
+
+
+
         public string DonationRecipient
         {
             get
@@ -47,20 +79,20 @@ namespace h5chocolate_teambla
             donation = total;
         }
         //Flytta de två metoderna till anv.gränssnittet, lägg till properties med get
-        public void PrintOrderInfo(User currentUser)
-        {
+        // public void PrintOrderInfo(User currentUser)
+        // {
 
-            Console.WriteLine("Order nr: " + orderNr);
-            Console.WriteLine("Customer ID: " + currentUser.Id);
-            Console.WriteLine("Donation amount: " + donation.ToString("C", CultureInfo.CurrentCulture));
-            Console.WriteLine("Donation recipient: " + donationRecipient);
-            Console.WriteLine("Time of order: " + dateTime.ToString("MM/dd/yyyy HH:mm"));
+        //     Console.WriteLine("Order nr: " + orderNr);
+        //     Console.WriteLine("Customer ID: " + currentUser.Id);
+        //     Console.WriteLine("Donation amount: " + donation.ToString("C", CultureInfo.CurrentCulture));
+        //     Console.WriteLine("Donation recipient: " + donationRecipient);
+        //     Console.WriteLine("Time of order: " + dateTime.ToString("MM/dd/yyyy HH:mm"));
 
-            Console.WriteLine();
-            PrintProductList();
-            Console.WriteLine();
+        //     Console.WriteLine();
+        //     PrintProductList();
+        //     Console.WriteLine();
 
-        }
+        // }
 
         public void PrintProductList()
         {

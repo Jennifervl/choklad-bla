@@ -1,6 +1,5 @@
 using System;
-using System.Linq;
-using System.Threading;
+using System.Globalization;
 
 namespace h5chocolate_teambla
 {
@@ -38,10 +37,9 @@ namespace h5chocolate_teambla
             }
         }
 
-
-
         public static bool ShowMenu(User currentUser)
         {
+
             while (true)
             {
                 Console.Clear();
@@ -54,14 +52,15 @@ namespace h5chocolate_teambla
 
                 switch (menuChoice)
                 {
+
                     case "1":
                         {
                             Order newOrder = CreateNewOrder();
                             while (menuChoice != "Y" | menuChoice != "N")
                             {
                                 Console.Clear();
-                                newOrder.PrintOrderInfo(currentUser);
-                                Console.WriteLine("-- CONFIRM ORDER Y/N? --");
+                                PrintFuckyOrder(newOrder, currentUser);
+                                Console.WriteLine("\n-- CONFIRM ORDER Y/N? --");
                                 menuChoice = Console.ReadLine().ToUpper();
 
                                 if (menuChoice == "Y")
@@ -90,7 +89,8 @@ namespace h5chocolate_teambla
                             else
                                 foreach (Order item in currentUser.GetUserHistory())
                                 {
-                                    item.PrintOrderInfo(currentUser);
+
+                                    PrintFuckyOrder(newOrder, currentUser);
                                 }
                             Console.WriteLine("-- PRESS ANY KEY TO CONTINUE --");
                             Console.ReadKey();
@@ -102,6 +102,7 @@ namespace h5chocolate_teambla
                         return false;
                     default:
                         continue;
+
                 }
                 break;
             }
@@ -306,6 +307,18 @@ namespace h5chocolate_teambla
             return newChocolate;
         }
 
+        public static void PrintFuckyOrder(Order newOrder, User currentUser)
+        {
 
+            Console.WriteLine("Order nr: " + newOrder.OrderNr);
+            Console.WriteLine("Customer ID: " + currentUser.Id);
+            Console.WriteLine("Donation amount: " + newOrder.Donation.ToString("C", CultureInfo.CurrentCulture));
+            Console.WriteLine("Donation recipient: " + newOrder.DonationRecipient);
+            Console.WriteLine("Time of order: " + newOrder.Date.ToString("MM/dd/yyyy HH:mm\n\n"));
+
+            newOrder.PrintProductList();
+
+
+        }
     }
 }

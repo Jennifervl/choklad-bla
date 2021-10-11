@@ -59,7 +59,7 @@ namespace h5chocolate_teambla
                             while (menuChoice != "Y" | menuChoice != "N")
                             {
                                 Console.Clear();
-                                PrintFuckyOrder(newOrder, currentUser);
+                                PrintOrderInfo(newOrder, currentUser);
                                 Console.WriteLine("\n-- CONFIRM ORDER Y/N? --");
                                 menuChoice = Console.ReadLine().ToUpper();
 
@@ -90,7 +90,7 @@ namespace h5chocolate_teambla
                                 foreach (Order item in currentUser.GetUserHistory())
                                 {
 
-                                    PrintFuckyOrder(newOrder, currentUser);
+                                    PrintOrderInfo(item, currentUser);
                                 }
                             Console.WriteLine("-- PRESS ANY KEY TO CONTINUE --");
                             Console.ReadKey();
@@ -307,14 +307,14 @@ namespace h5chocolate_teambla
             return newChocolate;
         }
 
-        public static void PrintFuckyOrder(Order newOrder, User currentUser)
+        public static void PrintOrderInfo(Order newOrder, User currentUser)
         {
 
             Console.WriteLine("Order nr: " + newOrder.OrderNr);
             Console.WriteLine("Customer ID: " + currentUser.Id);
             Console.WriteLine("Donation amount: " + newOrder.Donation.ToString("C", CultureInfo.CurrentCulture));
             Console.WriteLine("Donation recipient: " + newOrder.DonationRecipient);
-            Console.WriteLine("Time of order: " + newOrder.Date.ToString("MM/dd/yyyy HH:mm\n\n"));
+            Console.WriteLine("Time of order: " + newOrder.GetDateTime.ToString("MM/dd/yyyy HH:mm\n\n"));
 
             newOrder.PrintProductList();
 

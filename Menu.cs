@@ -135,7 +135,7 @@ namespace h5chocolate_teambla
                     }
                     else if (choice == "2")
                     {
-                        Cap newCap = Menu.CreateCap();
+                        Product newCap = Menu.CreateCap();
                         newOrder.AddProduct(newCap);
                         break;
                     }
@@ -188,7 +188,7 @@ namespace h5chocolate_teambla
             }
         }
 
-        public static Cap CreateCap()
+        public static Product CreateCap()
         {
             string colour;
             string choice;
@@ -234,8 +234,10 @@ namespace h5chocolate_teambla
                 }
             }
 
-            Cap newCap = new Cap(colour, size, 50, "Cap");
-            return newCap;
+            // Cap newCap = new Cap(colour, size, 50, "Cap");
+            // return newCap;
+            Product cap = new CapFactory().CreateProduct(colour, size, 50.ToString(), "cap");
+            return cap;
         }
 
         public static Chocolate CreateChocolate()

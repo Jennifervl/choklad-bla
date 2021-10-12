@@ -128,7 +128,7 @@ namespace h5chocolate_teambla
 
                     if (choice == "1")
                     {
-                        Chocolate newChoco = Menu.CreateChocolate();
+                        Product newChoco = Menu.CreateChocolate();
                         newOrder.AddProduct(newChoco);
                         break;
 
@@ -240,7 +240,7 @@ namespace h5chocolate_teambla
             return cap;
         }
 
-        public static Chocolate CreateChocolate()
+        public static Product CreateChocolate()
         {
             string filling = "";
             double price = 0;
@@ -307,8 +307,9 @@ namespace h5chocolate_teambla
                 Console.ReadKey();
             }
 
-            Chocolate newChocolate = new(cocoa, filling, price, "Chocolate");
-            return newChocolate;
+            // Chocolate newChocolate = new(cocoa, filling, price, "Chocolate");
+            Product choco = new ChocolateFactory().CreateProduct(cocoa.ToString(), filling, price.ToString(), "Chocolate");
+            return choco;
         }
 
         public static void PrintOrderInfo(Order newOrder, User currentUser)
@@ -325,19 +326,17 @@ namespace h5chocolate_teambla
 
         public static void PrintProductList(Order order)
         {
+            foreach (Product item in order.ProductList)
             {
-                foreach (Product item in order.ProductList)
+                if (item is Cap)
                 {
-                    if (item is Cap)
-                    {
-                        var tempCap = item as Cap;
-                        Console.WriteLine($"Product: {tempCap.ProductType}".PadRight(25) + $"Size: {tempCap.Size}".PadRight(25) + $"Colour:  {tempCap.Colour}".PadRight(35) + $"Price: {tempCap.Price.ToString("C", CultureInfo.CurrentCulture)}");
-                    }
-                    else if (item is Chocolate)
-                    {
-                        var tempChocolate = item as Chocolate;
-                        Console.WriteLine($"Product: {tempChocolate.ProductType}".PadRight(25) + $"Cocoa content: {tempChocolate.CocoaAmount}%".PadRight(25) + $"Filling: {tempChocolate.Filling}".PadRight(35) + $"Price: {tempChocolate.Price.ToString("C", CultureInfo.CurrentCulture)}");
-                    }
+                    var tempCap = item as Cap;
+                    Console.WriteLine($"Product: {tempCap.ProductType}".PadRight(25) + $"Size: {tempCap.Size}".PadRight(25) + $"Colour:  {tempCap.Colour}".PadRight(35) + $"Price: {tempCap.Price.ToString("C", CultureInfo.CurrentCulture)}");
+                }
+                else if (item is Chocolate)
+                {
+                    var tempChocolate = item as Chocolate;
+                    Console.WriteLine($"Product: {tempChocolate.ProductType}".PadRight(25) + $"Cocoa content: {tempChocolate.CocoaAmount}%".PadRight(25) + $"Filling: {tempChocolate.Filling}".PadRight(35) + $"Price: {tempChocolate.Price.ToString("C", CultureInfo.CurrentCulture)}");
                 }
             }
         }
